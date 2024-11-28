@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Data;
 using static Entidades.Entidades;
 using System.Collections;
+using System.Windows.Controls.Primitives;
 
 namespace Funciones
 {
@@ -543,11 +544,13 @@ namespace Funciones
                         {
                             UsuarioID = reader.GetInt32(0),
                             Nombre = reader.GetString(1),
-                            Apellido = reader.GetString(2),
-                            Documento = reader.GetString(3),
-                            Correo = reader.GetString(4),
-                            Telefono = reader.GetString(5),
-                            Usuario = reader.GetString(6)
+                            Correo = reader.GetString(2),
+                            Contraseña = reader.GetString(3),
+                            Rol = reader.GetString(4),
+                            Documento = reader.GetString(5),
+                            Telefono = reader.GetString(6),
+                            Usuario = reader.GetString(7),
+                            Apellido = reader.GetString(8),
                         };
 
                     }
@@ -562,7 +565,42 @@ namespace Funciones
             return usuarios;
 
 
+        }
+        public static List<Entidades.Entidades.Libros> LibrosPorNombre(string nombre)
+        {
+            List<Entidades.Entidades.Libros> librosEncontrados = new List<Libros>();
 
+            string query = "SELECT * FROM Libros WHERE Titulo LIKE '%' + @titulo + '%'";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@titulo", nombre);
+
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Entidades.Entidades.Libros libro = new Entidades.Entidades.Libros()
+                        {
+                            LibroID = reader.GetInt32(0),
+                            Titulo = reader.GetString(1),
+                            Autor = reader.GetString(2),
+                            ISBN = reader.GetString(3),
+                            Disponible = reader.GetBoolean(4),
+                            FechaLanzamiento = reader.GetDateTime(5)
+                        };
+                        librosEncontrados.Add(libro);
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ocurrio un error" + e.Message);
+                }
+            }
+            return librosEncontrados;
         }
     }
 }

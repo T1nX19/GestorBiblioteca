@@ -21,9 +21,9 @@
                 <ComboBox x:Name="selector" Width="200" Height="25" Margin="0,0,10,0" SelectionChanged="selector_SelectionChanged" SelectedIndex="0">
                     <ComboBoxItem IsEnabled="False" Content="Seleccione una opcion" />
                     <ComboBoxItem Content="Libros"/>
-                    <ComboBoxItem Content="Usuarios"/>
-                    <ComboBoxItem Content="Devoluciones"/>
-                    <ComboBoxItem Content="Prestamos"/>
+                    <ComboBoxItem Name="usuariocmb" Content="Usuarios"/>
+                    <ComboBoxItem Name="devolucionescmb" Content="Devoluciones"/>
+                    <ComboBoxItem Name="prestamocmb" Content="Prestamos"/>
                 </ComboBox>
 
                 <!-- Buscador -->

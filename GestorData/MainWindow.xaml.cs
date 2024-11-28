@@ -28,6 +28,17 @@ namespace GestorData
         {
             InitializeComponent();
             email = Email;
+            Entidades.Entidades.Usuarios usuarios = Funciones.Program.UsuariosPorEmail(email);
+            devolucionescmb.Visibility = Visibility.Hidden;
+            if (usuarios.Rol == "Usuario")
+            {
+                Agregar.Visibility = Visibility.Hidden;
+                Modificar.Visibility = Visibility.Hidden;
+                Eliminar.Visibility = Visibility.Hidden;
+                prestamocmb.Visibility = Visibility.Hidden;
+                devolucionescmb.Visibility = Visibility.Hidden;
+                usuariocmb.Visibility = Visibility.Hidden;
+            }
         }
 
 
@@ -70,7 +81,27 @@ namespace GestorData
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+            string titulobuscado = buscadorg.Text;
+
+            List<Entidades.Entidades.Libros> libroBuscado = Funciones.Program.LibrosPorNombre(titulobuscado);
+
+            if (libroBuscado != null && libroBuscado.Count > 0)
+            {
+                dt_libros.Visibility = Visibility.Visible;
+                dt_prestamos.Visibility = Visibility.Hidden;
+                dt_devoluciones.Visibility = Visibility.Hidden;
+                dt_usuarios.Visibility = Visibility.Hidden;
+                dt_libros.HeadersVisibility = DataGridHeadersVisibility.All;
+                dt_libros.ItemsSource = libroBuscado;
+            }
+            else
+            {
+                // Si no se encuentra, mostrar un mensaje de error
+                MessageBox.Show("El libro no fue encontrado.", "Búsqueda", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                // Opcional: Limpiar el DataGrid
+                dt_libros.ItemsSource = null;
+            }
         }
 
         private void Agregar_Click(object sender, RoutedEventArgs e)
