@@ -66,11 +66,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID Prestamo" Binding="{Binding PrestamoID}"/>
                 <DataGridTextColumn Header="ID Usuario" Binding="{Binding UsuarioID}"/>
+                <DataGridTextColumn Header="Documento" Binding="{Binding Documento}"/>
                 <DataGridTextColumn Header="ID Libro" Binding="{Binding LibroID}"/>
+                <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}"/>
                 <DataGridTextColumn Header="Fecha Del Prestamo" Binding="{Binding FechaPrestamo}"/>
                 <DataGridTextColumn Header="Fecha De Devolucion" Binding="{Binding FechaDevolucion}"/>
-                <DataGridTextColumn Header="Devuelto" Binding="{Binding Devuelto}"/>
-            </DataGrid.Columns>
+                
+
+
+                </DataGrid.Columns>
          </DataGrid>
         </Grid>
 

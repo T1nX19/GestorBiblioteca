@@ -22,11 +22,12 @@ namespace GestorData
     /// </summary>
     public partial class MainWindow : Window
     {
-        
 
+        public static string email;
         public MainWindow(string Email)
         {
             InitializeComponent();
+            email = Email;
         }
 
 
@@ -52,6 +53,16 @@ namespace GestorData
                 dt_usuarios.HeadersVisibility = DataGridHeadersVisibility.All;
                 List<Entidades.Entidades.Usuarios> usuarios = Funciones.Program.MostrarUsuarios();
                 dt_usuarios.ItemsSource = usuarios;
+            }
+            else if (indice_seleccionado == 4)
+            {
+                dt_libros.Visibility= Visibility.Hidden;
+                dt_prestamos.Visibility= Visibility.Visible;
+                dt_devoluciones.Visibility= Visibility.Hidden;
+                dt_usuarios.Visibility= Visibility.Hidden;
+                dt_prestamos.HeadersVisibility = DataGridHeadersVisibility.All;
+                List<Entidades.Entidades.Prestamos> prestamos = Funciones.Program.ListaPrestamo();
+                dt_prestamos.ItemsSource = prestamos;
             }
 
             

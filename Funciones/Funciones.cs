@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Data;
 using static Entidades.Entidades;
+using System.Collections;
 
 namespace Funciones
 {
@@ -481,6 +482,87 @@ namespace Funciones
             return isbnl;    
         }
 
+        public static List<Entidades.Entidades.Prestamos> ListaPrestamo()
+        {
+            List<Entidades.Entidades.Prestamos> prestamos = new List<Prestamos>();
+            
+            using (SqlConnection connection = conexion())
+            {
+                string query = "SELECT * FROM Prestamos";
 
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Entidades.Entidades.Prestamos prestamos1 = new Entidades.Entidades.Prestamos
+                        {
+                            PrestamoID = reader.GetInt32(0),
+                            UsuarioID = reader.GetInt32(1),
+                            LibroID = reader.GetInt32(2),
+                            FechaPrestamo = reader.GetDateTime(3),
+                            FechaDevolucion = reader.GetDateTime(4),
+                            Devuelto = reader.GetBoolean(5),
+                            Documento = reader.GetString(6),
+                            ISBN = reader.GetString(7),
+
+                        };
+                       
+                        prestamos.Add(prestamos1);
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un error :" + ex.Message);
+                }
+
+            }
+            return prestamos;
+        }
+
+        public static Entidades.Entidades.Usuarios UsuariosPorEmail(string correo)
+        {
+            Entidades.Entidades.Usuarios usuarios = null;
+
+            using (SqlConnection connection = conexion())
+            {
+                string query = "SELECT * FROM Usuarios WHERE Correo=@correo";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@correo", correo);
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        usuarios = new Entidades.Entidades.Usuarios()
+                        {
+                            UsuarioID = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            Documento = reader.GetString(3),
+                            Correo = reader.GetString(4),
+                            Telefono = reader.GetString(5),
+                            Usuario = reader.GetString(6)
+                        };
+
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ha ocurrido un error: " + e.Message);
+                }
+            }
+            return usuarios;
+
+
+
+        }
     }
 }
