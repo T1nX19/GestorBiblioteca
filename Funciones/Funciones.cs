@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Data;
+using static Entidades.Entidades;
 
 namespace Funciones
 {
@@ -26,7 +27,7 @@ namespace Funciones
         }
 
         //Funciones De Registro
-        public static bool Registrarusuario(Entidades.Entidades.Usuarios usuarios) 
+        public static bool Registrarusuario(Entidades.Entidades.Usuarios usuarios)
         {
             string query = "INSERT INTO Usuarios(Nombre, Correo, Contraseña, Documento, Telefono, Rol,Usuario,Apellido)" +
                 " VALUES (@Nombre, @Correo, @Contraseña, @Documento, @Telefono, @Rol,@Usuario,@Apellido) ";
@@ -49,7 +50,7 @@ namespace Funciones
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message);
                 return false;
@@ -88,7 +89,7 @@ namespace Funciones
         {
             string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
-            return Regex.IsMatch(Email,pattern);
+            return Regex.IsMatch(Email, pattern);
         }
 
         public static bool ValidacionUser(string NombreUsuario)
@@ -97,9 +98,9 @@ namespace Funciones
             {
                 string query = "SELECT COUNT(1) FROM Usuarios WHERE Usuario=@Usuario";//El arroba es para que no haya inyeccion de SQL
 
-                using (SqlCommand cmd= new SqlCommand(query,connection))
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@Usuario",NombreUsuario);
+                    cmd.Parameters.AddWithValue("@Usuario", NombreUsuario);
                     int count = (int)cmd.ExecuteScalar();//Fuerza un casting
 
                     return count == 0;
@@ -110,20 +111,20 @@ namespace Funciones
         public static bool ValidacionDocumento(string Documento)
         {
             string pattern = @"^\d{8}$";
-            
+
             return Regex.IsMatch(Documento, pattern);
         }
         public static int Login(Entidades.Entidades.Usuarios usuarios)
         {
             int retorno = 0;
-            
+
             using (SqlConnection connection = conexion())
             {
                 string query = "SELECT COUNT(1) FROM Usuarios WHERE Correo=@Correo AND Contraseña COLLATE SQL_Latin1_General_CP1_CS_AS =@Contraseña ";
-                
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Correo",usuarios.Correo);
+                    command.Parameters.AddWithValue("@Correo", usuarios.Correo);
                     command.Parameters.AddWithValue("@Contraseña", usuarios.Contraseña);
                     try
                     {
@@ -147,7 +148,7 @@ namespace Funciones
 
             using (SqlConnection connection = conexion())
             {
-                SqlCommand cmd = new SqlCommand(query,connection);
+                SqlCommand cmd = new SqlCommand(query, connection);
 
                 try
                 {
@@ -158,11 +159,11 @@ namespace Funciones
                         Entidades.Entidades.Libros librosobj = new Entidades.Entidades.Libros()
                         {
                             LibroID = reader.GetInt32(0),
-                            Titulo=reader.GetString(1),
-                            Autor=reader.GetString(2),
-                            ISBN=reader.GetString(3),
-                            Disponible=reader.GetBoolean(4),
-                            FechaLanzamiento=reader.GetDateTime(5)
+                            Titulo = reader.GetString(1),
+                            Autor = reader.GetString(2),
+                            ISBN = reader.GetString(3),
+                            Disponible = reader.GetBoolean(4),
+                            FechaLanzamiento = reader.GetDateTime(5)
                         };
 
                         libros.Add(librosobj);
@@ -170,7 +171,7 @@ namespace Funciones
 
                     reader.Close();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     MessageBox.Show("Ha ocurrido un error: " + e.Message);
                 }
@@ -181,41 +182,41 @@ namespace Funciones
         public static bool ModificarLibros(Entidades.Entidades.Libros libros)
         {
             string query = "UPDATE Libros SET Titulo = @Titulo, Autor = @Autor, ISBN = @ISBN, FechaLanzamiento = @FechaLanzamiento WHERE LibroID = @ID";
-            
-                using (SqlConnection connection = conexion())
+
+            using (SqlConnection connection = conexion())
+            {
+                using (SqlTransaction transaccion = connection.BeginTransaction())
                 {
-                    using (SqlTransaction transaccion = connection.BeginTransaction())
+                    try
                     {
-                        try 
-                        {
-                            SqlCommand command = new SqlCommand(query, connection, transaccion);
+                        SqlCommand command = new SqlCommand(query, connection, transaccion);
 
-                            command.Parameters.AddWithValue("@Titulo", libros.Titulo);
-                            command.Parameters.AddWithValue("@Autor", libros.Autor);
-                            command.Parameters.AddWithValue("@ISBN", libros.ISBN);
-                            command.Parameters.AddWithValue("@FechaLanzamiento", libros.FechaLanzamiento);
-                            command.Parameters.AddWithValue("@ID", libros.LibroID);
+                        command.Parameters.AddWithValue("@Titulo", libros.Titulo);
+                        command.Parameters.AddWithValue("@Autor", libros.Autor);
+                        command.Parameters.AddWithValue("@ISBN", libros.ISBN);
+                        command.Parameters.AddWithValue("@FechaLanzamiento", libros.FechaLanzamiento);
+                        command.Parameters.AddWithValue("@ID", libros.LibroID);
 
-                            int retorno = command.ExecuteNonQuery(); // Si devuelve 1 se modifico el usuario correctamente. si es 0 hay un error
-                            transaccion.Commit();
-                            return retorno > 0;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Ha ocurrido un error" + ex.Message);
-                            transaccion.Rollback();
-                            return false;
-                            throw;
-                        }
+                        int retorno = command.ExecuteNonQuery(); // Si devuelve 1 se modifico el usuario correctamente. si es 0 hay un error
+                        transaccion.Commit();
+                        return retorno > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ha ocurrido un error" + ex.Message);
+                        transaccion.Rollback();
+                        return false;
+                        throw;
                     }
                 }
+            }
         }
 
         public static void EliminarUsuario(int id)
         {
             using (SqlConnection connection = conexion())
             {
-               SqlTransaction transaccion = connection.BeginTransaction();
+                SqlTransaction transaccion = connection.BeginTransaction();
 
                 try
                 {
@@ -227,12 +228,12 @@ namespace Funciones
                     transaccion.Commit();
                     MessageBox.Show("Se ha eliminado el usuario");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    transaccion.Rollback() ;
+                    transaccion.Rollback();
                     Console.WriteLine("Ocurrio un error: " + ex.Message);
                 }
-               
+
 
             }
         }
@@ -250,9 +251,9 @@ namespace Funciones
 
                 try
                 {
-                    string query ="DELETE FROM Libros WHERE LibroID=@id";
-                    SqlCommand cmd = new SqlCommand(query,connection,sqlTransaction);
-                    cmd.Parameters.AddWithValue("@id",id);
+                    string query = "DELETE FROM Libros WHERE LibroID=@id";
+                    SqlCommand cmd = new SqlCommand(query, connection, sqlTransaction);
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
 
                     sqlTransaction.Commit();
@@ -270,35 +271,35 @@ namespace Funciones
         public static List<Entidades.Entidades.Usuarios> MostrarUsuarios()
         {
             List<Entidades.Entidades.Usuarios> usuario = new List<Entidades.Entidades.Usuarios>();
-            using (SqlConnection connection = conexion() )
+            using (SqlConnection connection = conexion())
             {
                 string query = "SELECT UsuarioID,Nombre,Apellido,Documento,Correo,Telefono,Usuario FROM Usuarios";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 try
                 {
-                    SqlDataReader reader= cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         Entidades.Entidades.Usuarios usuarioObj = new Entidades.Entidades.Usuarios()
                         {
-                            UsuarioID=reader.GetInt32(0),
-                            Nombre=reader.GetString(1),
-                            Apellido=reader.GetString(2),
-                            Documento=reader.GetString(3),
-                            Correo=reader.GetString(4),
-                            Telefono=reader.GetString(5),
-                            Usuario=reader.GetString(6)
+                            UsuarioID = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            Documento = reader.GetString(3),
+                            Correo = reader.GetString(4),
+                            Telefono = reader.GetString(5),
+                            Usuario = reader.GetString(6)
                         };
                         usuario.Add(usuarioObj);
                     }
                     reader.Close();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     MessageBox.Show("Ha ocurrido un error: " + e.Message);
-                }   
+                }
             }
             return usuario;
         }
@@ -311,7 +312,7 @@ namespace Funciones
             using (SqlConnection connection = conexion())
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@id",id);
+                cmd.Parameters.AddWithValue("@id", id);
                 try
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -339,5 +340,147 @@ namespace Funciones
             }
             return libro;
         }
+        public static bool AgregarPrestamos(Entidades.Entidades.Prestamos prestamo)
+        {
+            string query = "INSERT INTO Prestamos (UsuarioID, LibroID, FechaPrestamo, FechaDevolucion, Devuelto, Documento, ISBN)\r\nVALUES (@UsuarioID, @LibroID, @FechaPrestamo, @FechaDevolucion, @Devuelto, @Documento, @ISBN);";
+            
+            try
+            {
+                using (SqlConnection connection = conexion())
+                {
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    
+
+                    command.Parameters.AddWithValue("@UsuarioID", prestamo.UsuarioID);
+                    command.Parameters.AddWithValue("@LibroID", prestamo.LibroID);
+                    command.Parameters.AddWithValue("@FechaPrestamo", prestamo.FechaPrestamo);
+                    command.Parameters.AddWithValue("@FechaDevolucion", prestamo.FechaDevolucion);
+                    command.Parameters.AddWithValue("@Devuelto", prestamo.Devuelto);
+                    command.Parameters.AddWithValue("@Documento", prestamo.Documento);
+                    command.Parameters.AddWithValue("@ISBN", prestamo.ISBN);
+
+                    int retorno = command.ExecuteNonQuery(); // Si devuelve 1 se agrega el usuario correctamente. si es 0 hay un error
+                    return retorno > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error: " + ex.Message);
+                return false;
+            }
+        }
+
+        public static Entidades.Entidades.Prestamos OrdenarPrestamoDocumento(string documento)
+        {
+            Entidades.Entidades.Prestamos prestamos = new Entidades.Entidades.Prestamos();
+            string query = "SELECT * FROM Prestamos WHERE Documento=@documento";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@documento", documento);
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        prestamos = new Entidades.Entidades.Prestamos()
+                        {
+                            PrestamoID = reader.GetInt32(0),
+                            UsuarioID = reader.GetInt32(1),
+                            LibroID= reader.GetInt32(2),
+                            FechaPrestamo = reader.GetDateTime(3),
+                            FechaDevolucion = reader.GetDateTime(4),
+                            Devuelto = reader.GetBoolean(5),
+                            Documento = reader.GetString(6),
+                            ISBN = reader.GetString(7),
+                        };
+
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ha ocurrido un error: " + e.Message);
+                }
+            }
+            return prestamos;
+        }
+
+        public static Entidades.Entidades.Usuarios ObtenerDatosPorDocumento(string documento)
+        {
+            Entidades.Entidades.Usuarios documentos = new Entidades.Entidades.Usuarios();
+            string query = "SELECT * FROM Usuarios WHERE Documento=@documento";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@documento", documento);
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        documentos = new Entidades.Entidades.Usuarios()
+                        {
+                            UsuarioID = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            Documento = reader.GetString(3),
+                            Correo = reader.GetString(4),
+                            Telefono = reader.GetString(5),
+                            Usuario = reader.GetString(6)
+                        };
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un Error: " + ex.Message);
+                }
+            }
+            return documentos;
+        }
+
+        public static Entidades.Entidades.Libros ObtenerDatosPorISBN(string isbn)
+        {
+            Entidades.Entidades.Libros isbnl = new Entidades.Entidades.Libros();
+            string query = "SELECT * FROM Libros WHERE ISBN=@isbn";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@isbn", isbn);
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        isbnl = new Entidades.Entidades.Libros()
+                        {
+                            LibroID = reader.GetInt32(0),
+                            Titulo = reader.GetString(1),
+                            Autor = reader.GetString(2),
+                            ISBN = reader.GetString(3),
+                            Disponible = reader.GetBoolean(4),
+                            FechaLanzamiento = reader.GetDateTime(5)
+                        };
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un Error: " + ex.Message);
+                }
+            }
+            return isbnl;    
+        }
+
+
     }
 }

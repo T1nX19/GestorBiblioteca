@@ -68,9 +68,11 @@ namespace Entidades
             public DateTime FechaPrestamo { get; set; }
             public DateTime FechaDevolucion { get; set; }
             public bool Devuelto { get; set; }
+            public string Documento {  get; set; }
+            public string ISBN { get; set;}
 
             public Prestamos() { }
-            public Prestamos(int prestamoID, int usuarioID, int libroID, DateTime fechaPrestamo, DateTime fechaDevolucion, bool devuelto)
+            public Prestamos(int prestamoID, int usuarioID, int libroID, DateTime fechaPrestamo, DateTime fechaDevolucion, bool devuelto, string Documento, string ISBN)
             {
                 this.PrestamoID = prestamoID;
                 this.UsuarioID = usuarioID;
@@ -78,6 +80,8 @@ namespace Entidades
                 this.FechaPrestamo = fechaPrestamo;
                 this.FechaDevolucion = fechaDevolucion;
                 this.Devuelto = devuelto;
+                this.Documento = Documento;
+                this.ISBN = ISBN;
             }
         }
         public class Devoluciones
