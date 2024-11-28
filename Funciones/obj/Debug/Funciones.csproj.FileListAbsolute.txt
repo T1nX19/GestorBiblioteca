@@ -1,0 +1,11 @@
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\bin\Debug\Funciones.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\bin\Debug\Funciones.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\bin\Debug\Funciones.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\bin\Debug\Entidades.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\bin\Debug\Entidades.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\bin\Debug\Entidades.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\obj\Debug\Funciones.csproj.AssemblyReference.cache
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\obj\Debug\Funciones.csproj.CoreCompileInputs.cache
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\obj\Debug\Funciones.csproj.Up2Date
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\obj\Debug\Funciones.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Funciones\obj\Debug\Funciones.pdb

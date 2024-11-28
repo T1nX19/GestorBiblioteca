@@ -1,0 +1,7 @@
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\bin\Debug\GestorApp.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\bin\Debug\GestorApp.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\bin\Debug\GestorApp.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\obj\Debug\GestorApp.csproj.AssemblyReference.cache
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\obj\Debug\GestorApp.csproj.CoreCompileInputs.cache
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\obj\Debug\GestorApp.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorApp\obj\Debug\GestorApp.pdb

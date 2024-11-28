@@ -1,0 +1,85 @@
+﻿<Window x:Class="GestorData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Gestión de Biblioteca" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+    <!-- Header -->
+        <Grid Grid.Row="0" Background="#261C1A">
+            <DockPanel>
+            <TextBlock Text="Gestión de Biblioteca" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,10" Foreground="#D5CCC7"/>
+
+            <!-- Buscador y Selector -->
+            
+                <!-- Selector -->
+                <ComboBox x:Name="selector" Width="200" Height="25" Margin="0,0,10,0" SelectionChanged="selector_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem IsEnabled="False" Content="Seleccione una opcion" />
+                    <ComboBoxItem Content="Libros"/>
+                    <ComboBoxItem Content="Usuarios"/>
+                    <ComboBoxItem Content="Devoluciones"/>
+                    <ComboBoxItem Content="Prestamos"/>
+                </ComboBox>
+
+                <!-- Buscador -->
+                <TextBox x:Name="buscadorg" Width="300" Height="25" FontSize="18" Margin="50,0,-80,0"/>
+                <Button Content="Buscar" Width="100" Height="30" Click="Button_Click"/>
+            </DockPanel>
+        </Grid>
+
+        <!-- DataGrid -->
+        <Grid Grid.Row="1" Background="#261C1A">
+            <DataGrid Visibility="Collapsed"  x:Name="dt_libros" AutoGenerateColumns="False" HeadersVisibility="None" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0,10,0,0" Background="#261C1A"  IsReadOnly="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding LibroID}"/>
+                    <DataGridTextColumn Header="Titulo" Binding="{Binding Titulo}"/>
+                    <DataGridTextColumn Header="Autor" Binding="{Binding Autor}"/>
+                    <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}"/>
+                    <DataGridTextColumn Header="Disponible" Binding="{Binding Disponible}"/>
+                    <DataGridTextColumn Header="Fecha De Lanzamiento" Binding="{Binding FechaLanzamiento}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="dt_usuarios" Visibility="Collapsed"  AutoGenerateColumns="False" HeadersVisibility="None" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0,10,0,0" Background="#261C1A"  IsReadOnly="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding UsuarioID}"/>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
+                    <DataGridTextColumn Header="apellido" Binding="{Binding Apellido}"/>
+                    <DataGridTextColumn Header="Documento" Binding="{Binding Documento}"/>
+                    <DataGridTextColumn Header="Correo" Binding="{Binding Correo}"/>
+                    <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}"/>
+                    <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario }"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="dt_devoluciones" Visibility="Collapsed"  AutoGenerateColumns="False" HeadersVisibility="None" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0,10,0,0" Background="#261C1A"  IsReadOnly="True" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Devolucion" Binding="{Binding DevolucionID}"/>
+                    <DataGridTextColumn Header="ID Prestamo" Binding="{Binding PrestamoID}"/>
+                    <DataGridTextColumn Header="Fecha De Devolucion" Binding="{Binding FechaDevolucionReal}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        <DataGrid x:Name="dt_prestamos" Visibility="Collapsed"  AutoGenerateColumns="False" HeadersVisibility="None" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0,10,0,0" Background="#261C1A"  IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Prestamo" Binding="{Binding PrestamoID}"/>
+                <DataGridTextColumn Header="ID Usuario" Binding="{Binding UsuarioID}"/>
+                <DataGridTextColumn Header="ID Libro" Binding="{Binding LibroID}"/>
+                <DataGridTextColumn Header="Fecha Del Prestamo" Binding="{Binding FechaPrestamo}"/>
+                <DataGridTextColumn Header="Fecha De Devolucion" Binding="{Binding FechaDevolucion}"/>
+                <DataGridTextColumn Header="Devuelto" Binding="{Binding Devuelto}"/>
+            </DataGrid.Columns>
+         </DataGrid>
+        </Grid>
+
+        <Grid Background="#261C1A" Grid.Row="2">
+            <DockPanel>
+                <Button Content="Agregar" FontSize="18" Name="Agregar" Margin="120,0" Width="100" Height="40" HorizontalAlignment="Center" Click="Agregar_Click"/>
+                <Button Content="Modificar" FontSize="18" Name="Modificar" Width="100" Height="40" HorizontalAlignment="Center" Click="Modificar_Click"/>
+                <Button Content="Eliminar" FontSize="18" Name="Eliminar" Width="100" Height="40" HorizontalAlignment="Center" Click="Eliminar_Click"/>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>

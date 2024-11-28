@@ -1,0 +1,7 @@
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\bin\Debug\Entidades.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\bin\Debug\Entidades.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\bin\Debug\Entidades.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\obj\Debug\Entidades.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Entidades\obj\Debug\Entidades.pdb

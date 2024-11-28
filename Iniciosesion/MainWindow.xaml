@@ -1,0 +1,36 @@
+﻿<Window x:Class="Iniciosesion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Iniciosesion"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Inicio Sesion" Height="500" Width="400">
+    <StackPanel Background="#261C1A">
+        <StackPanel Margin="0,100,0,0">    
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Correo" TextAlignment="Center" > 
+            
+            </TextBlock>
+            <TextBox x:Name="correoi" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">   
+            
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Contraseña" TextAlignment="Center"> 
+            </TextBlock>
+            <PasswordBox x:Name="contraseñai" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+            
+            </PasswordBox>
+        </StackPanel>
+        <StackPanel>
+            <Button FontSize="17" Height="30" Width="120" Margin="0,25,0,0" Click="Button_Click">
+                Iniciar Sesion
+            </Button>
+            <Button Background="Transparent" Foreground="#D5CCC7" FontSize="17" Height="30" Width="100" Margin="0,25,0,0" Click="Button_Click_1">
+                Registrarse
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</Window>

@@ -1,0 +1,99 @@
+﻿<Window x:Class="Registros.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Registros"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Registro" Height="1000" Width="700" >
+    
+    <StackPanel Background="#261C1A">
+        <StackPanel Margin="0,50,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Usuario" TextAlignment="Center" >
+
+            </TextBlock>
+            <TextBox x:Name="userr" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">
+
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Nombre" TextAlignment="Center" >
+
+            </TextBlock>
+            <TextBox x:Name="nombrer" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">
+
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Apellido" TextAlignment="Center" >
+
+            </TextBlock>
+            <TextBox x:Name="apellidor" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">
+
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Correo" TextAlignment="Center" >
+
+            </TextBlock>
+            <TextBox x:Name="correor" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">
+
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Contraseña" TextAlignment="Center">
+                </TextBlock>
+                <PasswordBox x:Name="contraseñar" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+
+                </PasswordBox>
+            </StackPanel>
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Confirmar Contraseña" TextAlignment="Center">
+            </TextBlock>
+            <PasswordBox x:Name="contraseña2r" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+
+            </PasswordBox>
+        </StackPanel>
+
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Documento" TextAlignment="Center" >
+
+            </TextBlock>
+            <TextBox x:Name="documentor" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">
+
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0,25,0,0">
+            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Telefono" TextAlignment="Center" >
+
+            </TextBlock>
+            <TextBox x:Name="telefonor" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">
+
+            </TextBox>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock FontSize="25" Foreground="#D5CCC7" TextAlignment="Center">
+                Seleccione Rol
+            </TextBlock>
+            <RadioButton x:Name="admin" FontSize="17" Foreground="#D5CCC7" HorizontalAlignment="Center" >
+                Administrador
+            </RadioButton>
+            <RadioButton x:Name="user" FontSize="17" Foreground="#D5CCC7" HorizontalAlignment="Center">
+                Usuario
+            </RadioButton>
+        </StackPanel>
+        <StackPanel>
+            <Button FontSize="17" Height="30" Width="120" Margin="0,25,0,0" Click="Button_Click">
+                Registrarse
+            </Button>
+            <Button Background="Transparent" Foreground="#D5CCC7" FontSize="17" Height="30" Width="100" Margin="0,25,0,0" Click="Button_Click_1">
+                Volver
+            </Button>
+        </StackPanel>
+        
+        
+    </StackPanel>
+</Window>
