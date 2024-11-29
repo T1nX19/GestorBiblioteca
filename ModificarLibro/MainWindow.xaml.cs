@@ -24,7 +24,7 @@ namespace ModificarLibro
         public int idSeleccionado;
         public MainWindow(int id)
         {
-            InitializeComponent();
+            InitializeComponent();         //seleccion de libro por ID
             idSeleccionado = id;
             Entidades.Entidades.Libros libroObtenidoPorId = Funciones.Program.ObtenerLibrosPorId(idSeleccionado);
             libroId.Text = idSeleccionado.ToString();
@@ -39,7 +39,7 @@ namespace ModificarLibro
             this.Close();
         }
 
-        private void guardar_Click(object sender, RoutedEventArgs e)
+        private void guardar_Click(object sender, RoutedEventArgs e) //boton de modificar libro con validaciones 
         {
             MessageBoxResult resultado = MessageBox.Show("¿Está seguro de que desea modificar los datos del libro?",
            "Confirmación", MessageBoxButton.YesNo, MessageBoxImage.Question);

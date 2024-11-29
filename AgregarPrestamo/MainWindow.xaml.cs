@@ -29,10 +29,10 @@ namespace AgregarPrestamo
 
         private void cancelar_Click_1(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
-        private void guardar_Click_1(object sender, RoutedEventArgs e)
+        private void guardar_Click_1(object sender, RoutedEventArgs e)// boton de registrar prestamos
         {
             Entidades.Entidades.Prestamos prestamos = new Entidades.Entidades.Prestamos();
             Entidades.Entidades.Usuarios usuarios = Funciones.Program.ObtenerDatosPorDocumento(usuariop.Text);

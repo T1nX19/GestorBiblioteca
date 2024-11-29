@@ -30,7 +30,7 @@ namespace AgregarLibro
             this.Close();
         }
 
-        private void guardar_Click(object sender, RoutedEventArgs e)
+        private void guardar_Click(object sender, RoutedEventArgs e) //boton de guardar y respectivas condiciones
         {
             Entidades.Entidades.Libros libros = new Entidades.Entidades.Libros();
 
