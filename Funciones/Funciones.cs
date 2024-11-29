@@ -270,7 +270,7 @@ namespace Funciones
             }
         }
 
-        public static List<Entidades.Entidades.Usuarios> MostrarUsuarios()
+        public static List<Entidades.Entidades.Usuarios> MostrarUsuarios() // Lista de usuarios
         {
             List<Entidades.Entidades.Usuarios> usuario = new List<Entidades.Entidades.Usuarios>();
             using (SqlConnection connection = conexion())
@@ -306,7 +306,7 @@ namespace Funciones
             return usuario;
         }
 
-        public static Entidades.Entidades.Libros ObtenerLibrosPorId(int id)
+        public static Entidades.Entidades.Libros ObtenerLibrosPorId(int id) // lista libros por ID
         {
             Entidades.Entidades.Libros libro = new Entidades.Entidades.Libros();
             string query = "SELECT * FROM Libros WHERE LibroId=@id";
@@ -483,7 +483,7 @@ namespace Funciones
             return isbnl;    
         }
 
-        public static List<Entidades.Entidades.Prestamos> ListaPrestamo()
+        public static List<Entidades.Entidades.Prestamos> ListaPrestamo() // Lista de prestamos
         {
             List<Entidades.Entidades.Prestamos> prestamos = new List<Prestamos>();
             

@@ -26,7 +26,7 @@ namespace Registros
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)  //boton de registro
         {
             Entidades.Entidades.Usuarios usuarios = new Entidades.Entidades.Usuarios();
 

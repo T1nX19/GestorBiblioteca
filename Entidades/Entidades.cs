@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Entidades
+    public class Entidades      //Modelo de base de datos
     {
         static void Main(string[] args)
         {
         }
 
-        public class Usuarios
+        public class Usuarios      // Tabla de usuarios
         {
-            public int UsuarioID { get; set; }
+            public int UsuarioID { get; set; }  
             public string Usuario {  get; set; }
             public string Nombre { get; set; }
             public string Apellido {  get; set; }
@@ -38,7 +38,7 @@ namespace Entidades
                 this.Apellido = Apellido;
             }
         }
-        public class Libros
+        public class Libros //tabla de libros
         {
             public int LibroID { get; set; }
             public string Titulo { get; set; }
@@ -60,7 +60,7 @@ namespace Entidades
 
 
         }
-        public class Prestamos
+        public class Prestamos // tabla de prestamos
         {
             public int PrestamoID { get; set; }
             public int UsuarioID { get; set; }
@@ -84,7 +84,7 @@ namespace Entidades
                 this.ISBN = ISBN;
             }
         }
-        public class Devoluciones
+        public class Devoluciones // tabla devoluciones
         {
             public int DevolucionID { get; set; }
             public int PrestamoID { get; set; }

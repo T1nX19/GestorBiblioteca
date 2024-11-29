@@ -25,7 +25,7 @@ namespace Iniciosesion
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //boton de inicio de sesion con validacion usuario/administrador
         {
             if (Funciones.Program.ValidarEmail (correoi.Text) == false )
             {
@@ -51,7 +51,7 @@ namespace Iniciosesion
         }
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e) //boton de registro
         {
             Registros.MainWindow registros = new Registros.MainWindow();
             registros.ShowDialog();

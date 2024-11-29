@@ -28,7 +28,7 @@ namespace GestorData
         {
             InitializeComponent();
             email = Email;
-            Entidades.Entidades.Usuarios usuarios = Funciones.Program.UsuariosPorEmail(email);
+            Entidades.Entidades.Usuarios usuarios = Funciones.Program.UsuariosPorEmail(email); // filtra por rol
             devolucionescmb.Visibility = Visibility.Hidden;
             if (usuarios.Rol == "Usuario")
             {
@@ -42,7 +42,7 @@ namespace GestorData
         }
 
 
-        private void selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void selector_SelectionChanged(object sender, SelectionChangedEventArgs e) 
         {
             int indice_seleccionado = selector.SelectedIndex;
             if (indice_seleccionado==1)
@@ -79,7 +79,7 @@ namespace GestorData
             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //boton de buscar
         {
             string titulobuscado = buscadorg.Text;
 
@@ -104,7 +104,7 @@ namespace GestorData
             }
         }
 
-        private void Agregar_Click(object sender, RoutedEventArgs e)
+        private void Agregar_Click(object sender, RoutedEventArgs e) //boton de agregar
         {
             AgregarLibro.MainWindow mainWindow = new AgregarLibro.MainWindow();
             mainWindow.ShowDialog();
