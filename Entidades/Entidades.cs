@@ -12,9 +12,9 @@ namespace Entidades
         {
         }
 
-        public class Usuarios      // Tabla de usuarios
+        public class Usuarios  
         {
-            public int UsuarioID { get; set; }  
+            public int UsuarioID { get; set; }
             public string Usuario {  get; set; }
             public string Nombre { get; set; }
             public string Apellido {  get; set; }
