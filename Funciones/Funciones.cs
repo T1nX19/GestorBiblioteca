@@ -270,6 +270,31 @@ namespace Funciones
             }
         }
 
+        public static void EliminarPrestamo(int id)
+        {
+            using (SqlConnection connection = conexion())
+            {
+                SqlTransaction sqlTransaction = connection.BeginTransaction();
+
+                try
+                {
+                    string query = "UPDATE Prestamos SET estado=1 WHERE PrestamoID=@id";
+                    SqlCommand cmd = new SqlCommand(query, connection, sqlTransaction);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+
+                    sqlTransaction.Commit();
+                    MessageBox.Show("Se ha eliminado el prestamo");
+                }
+                catch (Exception ex)
+                {
+                    // Si ocurre un error, revertir la transacción
+                    sqlTransaction.Rollback();
+                    Console.WriteLine("Ocurrió un error: " + ex.Message);
+                }
+            }
+        }
+
         public static List<Entidades.Entidades.Usuarios> MostrarUsuarios() // Lista de usuarios
         {
             List<Entidades.Entidades.Usuarios> usuario = new List<Entidades.Entidades.Usuarios>();
@@ -309,7 +334,7 @@ namespace Funciones
         public static Entidades.Entidades.Libros ObtenerLibrosPorId(int id) // lista libros por ID
         {
             Entidades.Entidades.Libros libro = new Entidades.Entidades.Libros();
-            string query = "SELECT * FROM Libros WHERE LibroId=@id WHERE estado=0";
+            string query = "SELECT * FROM Libros WHERE LibroId=@id AND estado=0";
 
             using (SqlConnection connection = conexion())
             {
@@ -373,49 +398,12 @@ namespace Funciones
             }
         }
 
-        public static Entidades.Entidades.Prestamos OrdenarPrestamoDocumento(string documento)
-        {
-            Entidades.Entidades.Prestamos prestamos = new Entidades.Entidades.Prestamos();
-            string query = "SELECT * FROM Prestamos WHERE Documento=@documento WHERE estado=0";
 
-            using (SqlConnection connection = conexion())
-            {
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@documento", documento);
-                try
-                {
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        prestamos = new Entidades.Entidades.Prestamos()
-                        {
-                            PrestamoID = reader.GetInt32(0),
-                            UsuarioID = reader.GetInt32(1),
-                            LibroID= reader.GetInt32(2),
-                            FechaPrestamo = reader.GetDateTime(3),
-                            FechaDevolucion = reader.GetDateTime(4),
-                            Devuelto = reader.GetBoolean(5),
-                            Documento = reader.GetString(6),
-                            ISBN = reader.GetString(7),
-                        };
-
-                    }
-
-                    reader.Close();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Ha ocurrido un error: " + e.Message);
-                }
-            }
-            return prestamos;
-        }
 
         public static Entidades.Entidades.Usuarios ObtenerDatosPorDocumento(string documento)
         {
             Entidades.Entidades.Usuarios documentos = new Entidades.Entidades.Usuarios();
-            string query = "SELECT * FROM Usuarios WHERE Documento=@documento WHERE estado=0";
+            string query = "SELECT * FROM Usuarios WHERE Documento=@documento ";
 
             using (SqlConnection connection = conexion())
             {
@@ -451,7 +439,7 @@ namespace Funciones
         public static Entidades.Entidades.Libros ObtenerDatosPorISBN(string isbn)
         {
             Entidades.Entidades.Libros isbnl = new Entidades.Entidades.Libros();
-            string query = "SELECT * FROM Libros WHERE ISBN=@isbn WHERE estado=0";
+            string query = "SELECT * FROM Libros WHERE ISBN=@isbn ";
 
             using (SqlConnection connection = conexion())
             {
@@ -531,7 +519,7 @@ namespace Funciones
 
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT * FROM Usuarios WHERE Correo=@correo WHERE estado=0";
+                string query = "SELECT * FROM Usuarios WHERE Correo=@correo ";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@correo", correo);
                 try
@@ -570,7 +558,7 @@ namespace Funciones
         {
             List<Entidades.Entidades.Libros> librosEncontrados = new List<Libros>();
 
-            string query = "SELECT * FROM Libros WHERE Titulo LIKE '%' + @titulo + '%' WHERE estado=0";
+            string query = "SELECT * FROM Libros WHERE Titulo LIKE '%' + @titulo + '%' AND estado=0";
 
             using (SqlConnection connection = conexion())
             {
@@ -602,5 +590,11 @@ namespace Funciones
             }
             return librosEncontrados;
         }
+
+        
+
+           
+
+            
     }
 }

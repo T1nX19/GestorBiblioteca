@@ -29,7 +29,6 @@ namespace GestorData
             InitializeComponent();
             email = Email;
             Entidades.Entidades.Usuarios usuarios = Funciones.Program.UsuariosPorEmail(email); // filtra por rol
-            devolucionescmb.Visibility = Visibility.Hidden;
             if (usuarios.Rol == "Usuario")
             {
                 Agregar.Visibility = Visibility.Hidden;
@@ -171,6 +170,20 @@ namespace GestorData
                     }
                 }
             }
+            else if(dt_prestamos.SelectedItem is Entidades.Entidades.Prestamos prestamoSeleccionado)
+                
+                    if(prestamoSeleccionado == null || prestamoSeleccionado.PrestamoID == null)
+                {
+                    MessageBox.Show("Seleccione un prestamo");
+                }
+                else
+                {
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Funciones.Program.EliminarPrestamo(prestamoSeleccionado.PrestamoID);
+                        List<Entidades.Entidades.Prestamos> prestamos = Funciones.Program.ListaPrestamo();
+                    }
+                }
             else
             {
                 MessageBox.Show("Seleccione una casilla");
