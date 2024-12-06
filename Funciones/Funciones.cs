@@ -122,7 +122,7 @@ namespace Funciones
 
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT COUNT(1) FROM Usuarios WHERE Correo=@Correo AND Contraseña COLLATE SQL_Latin1_General_CP1_CS_AS =@Contraseña ";
+                string query = "SELECT COUNT(1) FROM Usuarios WHERE Correo=@Correo AND Contraseña COLLATE SQL_Latin1_General_CP1_CS_AS =@Contraseña WHERE estado=0";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -222,7 +222,7 @@ namespace Funciones
 
                 try
                 {
-                    string query = "DELETE FROM Usuarios WHERE UsuarioID=@id";
+                    string query = "UPDATE Usuarios SET estado=1 WHERE UsuarioID=@id";
                     SqlCommand cmd = new SqlCommand(query, connection, transaccion);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
@@ -249,7 +249,7 @@ namespace Funciones
 
                 try
                 {
-                    string query = "DELETE FROM Libros WHERE LibroID=@id";
+                    string query = "UPDATE Libros SET estado=1 WHERE LibroID=@id";
                     SqlCommand cmd = new SqlCommand(query, connection, sqlTransaction);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
@@ -271,7 +271,7 @@ namespace Funciones
             List<Entidades.Entidades.Usuarios> usuario = new List<Entidades.Entidades.Usuarios>();
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT UsuarioID,Nombre,Apellido,Documento,Correo,Telefono,Usuario FROM Usuarios";
+                string query = "SELECT UsuarioID,Nombre,Apellido,Documento,Correo,Telefono,Usuario FROM Usuarios WHERE estado=0";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 try
@@ -305,7 +305,7 @@ namespace Funciones
         public static Entidades.Entidades.Libros ObtenerLibrosPorId(int id) // lista libros por ID
         {
             Entidades.Entidades.Libros libro = new Entidades.Entidades.Libros();
-            string query = "SELECT * FROM Libros WHERE LibroId=@id";
+            string query = "SELECT * FROM Libros WHERE LibroId=@id WHERE estado=0";
 
             using (SqlConnection connection = conexion())
             {
@@ -372,7 +372,7 @@ namespace Funciones
         public static Entidades.Entidades.Prestamos OrdenarPrestamoDocumento(string documento)
         {
             Entidades.Entidades.Prestamos prestamos = new Entidades.Entidades.Prestamos();
-            string query = "SELECT * FROM Prestamos WHERE Documento=@documento";
+            string query = "SELECT * FROM Prestamos WHERE Documento=@documento WHERE estado=0";
 
             using (SqlConnection connection = conexion())
             {
@@ -411,7 +411,7 @@ namespace Funciones
         public static Entidades.Entidades.Usuarios ObtenerDatosPorDocumento(string documento)
         {
             Entidades.Entidades.Usuarios documentos = new Entidades.Entidades.Usuarios();
-            string query = "SELECT * FROM Usuarios WHERE Documento=@documento";
+            string query = "SELECT * FROM Usuarios WHERE Documento=@documento WHERE estado=0";
 
             using (SqlConnection connection = conexion())
             {
@@ -447,7 +447,7 @@ namespace Funciones
         public static Entidades.Entidades.Libros ObtenerDatosPorISBN(string isbn)
         {
             Entidades.Entidades.Libros isbnl = new Entidades.Entidades.Libros();
-            string query = "SELECT * FROM Libros WHERE ISBN=@isbn";
+            string query = "SELECT * FROM Libros WHERE ISBN=@isbn WHERE estado=0";
 
             using (SqlConnection connection = conexion())
             {
@@ -485,7 +485,7 @@ namespace Funciones
             
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT * FROM Prestamos";
+                string query = "SELECT * FROM Prestamos WHERE estado=0";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -527,7 +527,7 @@ namespace Funciones
 
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT * FROM Usuarios WHERE Correo=@correo";
+                string query = "SELECT * FROM Usuarios WHERE Correo=@correo WHERE estado=0";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@correo", correo);
                 try
@@ -566,7 +566,7 @@ namespace Funciones
         {
             List<Entidades.Entidades.Libros> librosEncontrados = new List<Libros>();
 
-            string query = "SELECT * FROM Libros WHERE Titulo LIKE '%' + @titulo + '%'";
+            string query = "SELECT * FROM Libros WHERE Titulo LIKE '%' + @titulo + '%' WHERE estado=0";
 
             using (SqlConnection connection = conexion())
             {
