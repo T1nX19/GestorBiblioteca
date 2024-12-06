@@ -23,9 +23,10 @@ namespace Entidades
             public string Correo { get; set; }
             public string Contraseña { get; set; }
             public string Rol { get; set; }
+            public bool estado { get; set; }
 
             public Usuarios() { }
-            public Usuarios(int UsuarioID, string Nombre, string Documento, string Telefono, string Correo, string Contraseña, string Rol, string Usuario, string Apellido)
+            public Usuarios(int UsuarioID, string Nombre, string Documento, string Telefono, string Correo, string Contraseña, string Rol, string Usuario, string Apellido, bool estado)
             {
                 this.UsuarioID = UsuarioID;
                 this.Nombre = Nombre;
@@ -36,6 +37,7 @@ namespace Entidades
                 this.Rol = Rol;
                 this.Usuario = Usuario;
                 this.Apellido = Apellido;
+                this.estado = estado;
             }
         }
         public class Libros //tabla de libros
@@ -46,9 +48,10 @@ namespace Entidades
             public DateTime FechaLanzamiento { get; set; }
             public string ISBN { get; set; }
             public bool Disponible { get; set; }
+            public bool estado { get; set; }
 
             public Libros() { }
-            public Libros(int LibroID, string Titulo, string Autor, DateTime FechaLanzamiento, string ISBN, bool Disponible)
+            public Libros(int LibroID, string Titulo, string Autor, DateTime FechaLanzamiento, string ISBN, bool Disponible, bool estado)
             {
                 this.LibroID = LibroID;
                 this.Titulo = Titulo;
@@ -56,6 +59,7 @@ namespace Entidades
                 this.FechaLanzamiento = FechaLanzamiento;
                 this.ISBN = ISBN;
                 this.Disponible = Disponible;
+                this.estado= estado;
             }
 
 
@@ -70,9 +74,10 @@ namespace Entidades
             public bool Devuelto { get; set; }
             public string Documento {  get; set; }
             public string ISBN { get; set;}
+            public bool estado { get; set; }
 
             public Prestamos() { }
-            public Prestamos(int prestamoID, int usuarioID, int libroID, DateTime fechaPrestamo, DateTime fechaDevolucion, bool devuelto, string Documento, string ISBN)
+            public Prestamos(int prestamoID, int usuarioID, int libroID, DateTime fechaPrestamo, DateTime fechaDevolucion, bool devuelto, string Documento, string ISBN, bool estado)
             {
                 this.PrestamoID = prestamoID;
                 this.UsuarioID = usuarioID;
@@ -82,6 +87,7 @@ namespace Entidades
                 this.Devuelto = devuelto;
                 this.Documento = Documento;
                 this.ISBN = ISBN;
+                this.estado = estado;
             }
         }
         public class Devoluciones // tabla devoluciones
@@ -89,13 +95,15 @@ namespace Entidades
             public int DevolucionID { get; set; }
             public int PrestamoID { get; set; }
             public DateTime DevoReal { get; set; }
+            public bool estado { get; set; }
 
             public Devoluciones() { }
-            public Devoluciones(int devolucionID, int prestamoID, DateTime devoReal)
+            public Devoluciones(int devolucionID, int prestamoID, DateTime devoReal, bool estado)
             {
                 this.DevolucionID = devolucionID;
                 this.PrestamoID = prestamoID;
                 this.DevoReal = devoReal;
+                this.estado = estado;
             }
         }
         
