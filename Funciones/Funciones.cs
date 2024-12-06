@@ -122,7 +122,7 @@ namespace Funciones
 
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT COUNT(1) FROM Usuarios WHERE Correo=@Correo AND Contraseña COLLATE SQL_Latin1_General_CP1_CS_AS =@Contraseña WHERE estado=0";
+                string query = "SELECT COUNT(1) FROM Usuarios WHERE Correo=@Correo AND Contraseña COLLATE SQL_Latin1_General_CP1_CS_AS =@Contraseña AND estado=0";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
