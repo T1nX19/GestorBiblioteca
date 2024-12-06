@@ -80,10 +80,10 @@
 
         <Grid Background="#261C1A" Grid.Row="2">
             <DockPanel>
-                <Button Content="Agregar" FontSize="18" Name="Agregar" Margin="100,0" Width="100" Height="40" HorizontalAlignment="Center" Click="Agregar_Click"/>
-                <Button Content="Modificar" FontSize="18" Name="Modificar" Width="100" Height="40" HorizontalAlignment="Center" Click="Modificar_Click"/>
-                <Button Content="Eliminar" FontSize="18" Name="Eliminar" Width="100" Height="40" HorizontalAlignment="Center" Click="Eliminar_Click"/>
-                <Button Content="Prestamos" FontSize="18" Name="Prestamo" Width="100" Height="40" HorizontalAlignment="Center" Click="Prestamo_Click"/>
+                <Button Content="Agregar" FontSize="18" Name="Agregar" Margin="130,0,0,0" Width="100" Height="40" HorizontalAlignment="Center" Click="Agregar_Click"/>
+                <Button Content="Modificar" FontSize="18" Name="Modificar" Width="100" Margin="50,0,0,0" Height="40" HorizontalAlignment="Center" Click="Modificar_Click"/>
+                <Button Content="Eliminar" FontSize="18" Name="Eliminar" Width="100" Height="40" Margin="50,0,0,0" HorizontalAlignment="Center" Click="Eliminar_Click"/>
+                <Button Content="Prestamos" FontSize="18" Name="Prestamo" Width="100" Height="40" Margin="0,0,100,0" HorizontalAlignment="Center" Click="Prestamo_Click"/>
             </DockPanel>
         </Grid>
     </Grid>
