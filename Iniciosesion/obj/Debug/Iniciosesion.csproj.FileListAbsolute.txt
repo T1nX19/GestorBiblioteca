@@ -32,3 +32,6 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarL
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\ModificarLibro.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\ModificarLibro.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\ModificarLibro.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarPrestamo.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarPrestamo.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarPrestamo.exe.config

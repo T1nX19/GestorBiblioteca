@@ -10,7 +10,7 @@ using System.Data;
 using static Entidades.Entidades;
 using System.Collections;
 using System.Windows.Controls.Primitives;
-
+// tabla booleano 
 namespace Funciones
 {
     public class Program
@@ -239,10 +239,6 @@ namespace Funciones
 
             }
         }
-
-
-
-
 
         public static void EliminarLibros(int id)
         {

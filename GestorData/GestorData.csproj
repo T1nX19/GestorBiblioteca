@@ -99,6 +99,10 @@
       <Project>{d7e1eef0-f77f-46f4-927a-a9666178ac97}</Project>
       <Name>AgregarLibro</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AgregarPrestamo\AgregarPrestamo.csproj">
+      <Project>{0d96595c-03cb-48f1-aa45-2ffeb5f0a125}</Project>
+      <Name>AgregarPrestamo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{bfa8328c-e25e-4912-b04d-caf69f31d4a6}</Project>
       <Name>Entidades</Name>

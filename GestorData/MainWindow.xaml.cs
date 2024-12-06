@@ -38,6 +38,7 @@ namespace GestorData
                 prestamocmb.Visibility = Visibility.Hidden;
                 devolucionescmb.Visibility = Visibility.Hidden;
                 usuariocmb.Visibility = Visibility.Hidden;
+                Prestamo.Visibility = Visibility.Hidden;
             }
         }
 
@@ -174,6 +175,12 @@ namespace GestorData
             {
                 MessageBox.Show("Seleccione una casilla");
             }
+        }
+
+        private void Prestamo_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarPrestamo.MainWindow mainWindow = new AgregarPrestamo.MainWindow();
+            mainWindow.ShowDialog();
         }
     }
     

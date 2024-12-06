@@ -25,3 +25,6 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarLib
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarLibro.exe.config
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\ModificarLibro.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\ModificarLibro.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPrestamo.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPrestamo.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPrestamo.exe.config
