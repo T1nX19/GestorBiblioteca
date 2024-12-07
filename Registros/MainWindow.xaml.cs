@@ -86,13 +86,14 @@ namespace Registros
             }
             else
             {
-                MessageBox.Show("Ingrese Un documento Valido");
+                MessageBox.Show("Ingrese Un documento Valido, sin puntos");
                 return;
             }
 
             string patron1 = @"^\d{10}$";
             string patron2 = @"^\d{3}[-\s]?\d{3}[-\s]?\d{4}$";
-            string patron3 = @"^+?\d{1,3}?[-.\s]?(?:\d{1,4})?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$";
+            string patron3 = @"^\+?[0-9]{1,3}?[-.\s]?(\(?\d{1,4}?\)?)[-.\s]?\d{1,4}[-.\s]?\d{1,9}$";
+
 
             if (!Regex.IsMatch(telefonor.Text, patron1) && !Regex.IsMatch(telefonor.Text, patron2) && !Regex.IsMatch(telefonor.Text, patron3))
             {
