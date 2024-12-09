@@ -60,6 +60,29 @@ namespace Funciones
             }
         }
 
+        public static int registrarAdministrador(Entidades.Entidades.Admins admins)
+        {
+            using (SqlConnection connection = conexion())
+            {
+                string query = "INSERT INTO Admins (AdminID, Password) VALUES (@id,@password)";
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", admins.AdminID);
+                        cmd.Parameters.AddWithValue("@password", admins.Password);
+                        int filas = cmd.ExecuteNonQuery();
+                        return filas;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar administrador");
+                    return -1;
+                }
+            }
+        }
+
         public static bool AgregarLibros(Entidades.Entidades.Libros libros)
         {
             string query = "INSERT INTO Libros (Titulo, Autor, ISBN, FechaLanzamiento) VALUES (@Titulo, @Autor, @ISBN, @FechaLanzamiento)";
@@ -747,27 +770,6 @@ namespace Funciones
              }
              return new string(chars);
         }
-        public static int registrarAdministrador(Entidades.Entidades.Admins admins)
-        {
-            using (SqlConnection connection = conexion())
-            {
-                string query = "INSERT INTO Admins (AdminID, Password) VALUES (@id,@password)";
-                try
-                {
-                    using (SqlCommand cmd = new SqlCommand(query, connection))
-                    {
-                        cmd.Parameters.AddWithValue("@id", admins.AdminID );
-                        cmd.Parameters.AddWithValue("@password", admins.Password );
-                        int filas = cmd.ExecuteNonQuery();
-                        return filas;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al registrar administrador");
-                    return -1;
-                }
-            }
-        }
+        
     }
 }
