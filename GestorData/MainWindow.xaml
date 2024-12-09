@@ -59,7 +59,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Devolucion" Binding="{Binding DevolucionID}"/>
                     <DataGridTextColumn Header="ID Prestamo" Binding="{Binding PrestamoID}"/>
-                    <DataGridTextColumn Header="Fecha De Devolucion" Binding="{Binding FechaDevolucionReal}"/>
+                    <DataGridTextColumn Header="Fecha De Devolucion" Binding="{Binding DevoReal}"/>
                 </DataGrid.Columns>
             </DataGrid>
         <DataGrid x:Name="dt_prestamos" Visibility="Collapsed"  AutoGenerateColumns="False" HeadersVisibility="None" CanUserAddRows="False" CanUserDeleteRows="False" Margin="0,10,0,0" Background="#261C1A"  IsReadOnly="True" >
@@ -80,10 +80,11 @@
 
         <Grid Background="#261C1A" Grid.Row="2">
             <DockPanel>
-                <Button Content="Agregar" FontSize="18" Name="Agregar" Margin="130,0,0,0" Width="100" Height="40" HorizontalAlignment="Center" Click="Agregar_Click"/>
+                <Button Content="Agregar" FontSize="18" Name="Agregar" Margin="50,0,0,0" Width="100" Height="40" HorizontalAlignment="Center" Click="Agregar_Click"/>
                 <Button Content="Modificar" FontSize="18" Name="Modificar" Width="100" Margin="50,0,0,0" Height="40" HorizontalAlignment="Center" Click="Modificar_Click"/>
                 <Button Content="Eliminar" FontSize="18" Name="Eliminar" Width="100" Height="40" Margin="50,0,0,0" HorizontalAlignment="Center" Click="Eliminar_Click"/>
-                <Button Content="Prestamos" FontSize="18" Name="Prestamo" Width="100" Height="40" Margin="0,0,100,0" HorizontalAlignment="Center" Click="Prestamo_Click"/>
+                <Button Content="Prestamos" FontSize="18" Name="Prestamo" Width="100" Height="40" Margin="50,0,0,0" HorizontalAlignment="Center" Click="Prestamo_Click"/>
+                <Button Content="Devoluciones" FontSize="18" Name="Devolucion" Width="110" Height="40" Margin="0,0,10,0" HorizontalAlignment="Center" Click="Devolucion_Click"/>
             </DockPanel>
         </Grid>
     </Grid>

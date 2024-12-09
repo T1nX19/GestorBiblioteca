@@ -10,6 +10,7 @@ using System.Data;
 using static Entidades.Entidades;
 using System.Collections;
 using System.Windows.Controls.Primitives;
+using System.Security.Cryptography;
 // tabla booleano 
 namespace Funciones
 {
@@ -29,7 +30,7 @@ namespace Funciones
         }
 
         //Funciones De Registro
-        public static bool Registrarusuario(Entidades.Entidades.Usuarios usuarios)
+        public static int Registrarusuario(Entidades.Entidades.Usuarios usuarios)
         {
             string query = "INSERT INTO Usuarios(Nombre, Correo, Contraseña, Documento, Telefono, Rol,Usuario,Apellido)" +
                 " VALUES (@Nombre, @Correo, @Contraseña, @Documento, @Telefono, @Rol,@Usuario,@Apellido) ";
@@ -48,14 +49,14 @@ namespace Funciones
                         cmd.Parameters.AddWithValue("@Usuario", usuarios.Usuario);
                         cmd.Parameters.AddWithValue("@Apellido", usuarios.Apellido);
                         int retorno = cmd.ExecuteNonQuery(); // Si devuelve 1 se agrega el usuario correctamente. si es 0 hay un error
-                        return retorno > 0;
+                        return retorno;
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message);
-                return false;
+                return -1;
             }
         }
 
@@ -513,6 +514,52 @@ namespace Funciones
             return prestamos;
         }
 
+        public static List<Entidades.Entidades.Prestamos> ObtenerPrestamoPorId(int id)
+        {
+            List<Entidades.Entidades.Prestamos> prestamos = new List<Prestamos>();
+            string query = @"
+        SELECT 
+            p.PrestamoID, p.UsuarioID, p.LibroID, p.FechaPrestamo, p.FechaDevolucion, 
+            p.Devuelto, p.Documento, p.ISBN, l.Titulo
+        FROM Prestamos p
+        JOIN Libros l ON p.LibroID = l.LibroID
+        WHERE p.PrestamoID = @id";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Entidades.Entidades.Prestamos prestamos1 = new Entidades.Entidades.Prestamos
+                        {
+                            PrestamoID = reader.GetInt32(0),
+                            UsuarioID = reader.GetInt32(1),
+                            LibroID = reader.GetInt32(2),
+                            FechaPrestamo = reader.GetDateTime(3),
+                            FechaDevolucion = reader.GetDateTime(4),
+                            Devuelto = reader.GetBoolean(5),
+                            Documento = reader.GetString(6),
+                            ISBN = reader.GetString(7),
+                            Titulo = reader.GetString(8),  // Aquí obtenemos el título del libro
+                        };
+                        prestamos.Add(prestamos1);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ha ocurrido un error: " + e.Message);
+                }
+            }
+            return prestamos;
+        }
+
+
+
         public static Entidades.Entidades.Usuarios UsuariosPorEmail(string correo)
         {
             Entidades.Entidades.Usuarios usuarios = null;
@@ -591,10 +638,136 @@ namespace Funciones
             return librosEncontrados;
         }
 
-        
+        public static bool validarNumero(string numero,out int numerovalidado, string campo)
+        {
+            if (int.TryParse(numero, out numerovalidado))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Ingrese solo numeros: ");
+                return false;
+            }
+        }
 
-           
+        public static bool RegistrarDevolucion(int prestamoID, DateTime fechaDevolucionReal)
+        {
+             string updatePrestamoQuery = @"UPDATE Prestamos SET Devuelto = 1 WHERE PrestamoID = @prestamoID";
 
+            string insertDevolucionQuery = @"INSERT INTO Devoluciones (PrestamoID, FechaDevolucionReal, estado) VALUES (@prestamoID, @fechaDevolucionReal, 1)";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlTransaction transaction = null;
+
+                try
+                {
             
+                    transaction = connection.BeginTransaction();
+
+                    // Actualizar el estado del préstamo
+                    SqlCommand updateCmd = new SqlCommand(updatePrestamoQuery, connection, transaction);
+                    updateCmd.Parameters.AddWithValue("@prestamoID", prestamoID);
+                    updateCmd.ExecuteNonQuery();
+
+                    // Insertar registro de devolución
+                    SqlCommand insertCmd = new SqlCommand(insertDevolucionQuery, connection, transaction);
+                    insertCmd.Parameters.AddWithValue("@prestamoID", prestamoID);
+                    insertCmd.Parameters.AddWithValue("@fechaDevolucionReal", fechaDevolucionReal);
+                    insertCmd.ExecuteNonQuery();
+
+                    // Confirmar la transacción
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    // Revertir los cambios si ocurre un error
+                    transaction?.Rollback();
+                    MessageBox.Show("Error al registrar la devolución: " + e.Message);
+                    return false;
+                }
+            }       
+        }
+
+        public static List<Entidades.Entidades.Devoluciones> ListaDevolucion() // Lista de devolucion
+        {
+            List<Entidades.Entidades.Devoluciones> devolucion = new List<Devoluciones>();
+
+            using (SqlConnection connection = conexion())
+            {
+                string query = "SELECT * FROM Devoluciones";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Entidades.Entidades.Devoluciones devoluciones = new Entidades.Entidades.Devoluciones
+                        {
+                            DevolucionID = reader.GetInt32(0),
+                            PrestamoID = reader.GetInt32(1),
+                            DevoReal = reader.GetDateTime(2),
+                            
+                            
+                            
+
+                        };
+
+                        devolucion.Add(devoluciones);
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un error :" + ex.Message);
+                }
+
+            }
+            return devolucion;
+        }
+        
+        
+        public static string Generarpass(int length = 10)
+        {
+             const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*";
+             char[] chars = new char[length];
+             using (var crypto = new RNGCryptoServiceProvider())
+             {
+               byte[] data = new byte[length];
+               crypto.GetBytes(data);
+               for (int i = 0; i < chars.Length; i++)
+               {
+                  chars[i] = validChars[data[i] % validChars.Length];
+               }
+             }
+             return new string(chars);
+        }
+        public static int registrarAdministrador(Entidades.Entidades.Admins admins)
+        {
+            using (SqlConnection connection = conexion())
+            {
+                string query = "INSERT INTO Admins (AdminID, Password) VALUES (@id,@password)";
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@id", admins.AdminID );
+                        cmd.Parameters.AddWithValue("@password", admins.Password );
+                        int filas = cmd.ExecuteNonQuery();
+                        return filas;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al registrar administrador");
+                    return -1;
+                }
+            }
+        }
     }
 }

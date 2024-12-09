@@ -112,14 +112,31 @@ namespace Registros
             if (admin.IsChecked == true)
             {
                 usuarios.Rol = "Administrador";
+
             }
             if (user.IsChecked == true)
             {
                 usuarios.Rol = "Usuario";
             }
-            if (Funciones.Program.Registrarusuario(usuarios))
+            int agregado = Funciones.Program.Registrarusuario(usuarios);
+            if (agregado > 0)
             {
                 MessageBox.Show("El Usuario Se Registro Correctamente");
+            }
+            if(admin.IsChecked == true )
+            {
+                Entidades.Entidades.Admins admins = new Entidades.Entidades.Admins();
+                admins.AdminID = agregado;
+                admins.Password = Funciones.Program.Generarpass();
+                int resultado = Funciones.Program.registrarAdministrador(admins);
+                if (resultado > 0)
+                {
+                    MessageBox.Show("El administrador se registro correctamente. ");
+                }
+                else
+                {
+                    MessageBox.Show("Ha ocurrido un error. ");
+                }
             }
         }
 

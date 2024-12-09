@@ -15,13 +15,10 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciose
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Entidades.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Funciones.exe
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Entidades.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Entidades.exe.config
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Funciones.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Funciones.exe.config
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.pdb
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.exe.config
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciose.66275670.Up2Date
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\GestorData.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\GestorData.pdb
@@ -35,3 +32,12 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Modifica
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarPrestamo.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarPrestamo.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\AgregarPrestamo.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Devoluciones.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Devoluciones.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Devoluciones.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Ventanatoken.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Ventanatoken.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Ventanatoken.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.exe.config

@@ -28,3 +28,6 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\ModificarL
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPrestamo.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPrestamo.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPrestamo.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\Devoluciones.exe
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\Devoluciones.pdb
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\Devoluciones.exe.config

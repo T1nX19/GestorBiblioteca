@@ -74,10 +74,12 @@ namespace Entidades
             public bool Devuelto { get; set; }
             public string Documento {  get; set; }
             public string ISBN { get; set;}
+            public string Titulo { get; set; }
             public bool estado { get; set; }
 
+
             public Prestamos() { }
-            public Prestamos(int prestamoID, int usuarioID, int libroID, DateTime fechaPrestamo, DateTime fechaDevolucion, bool devuelto, string Documento, string ISBN, bool estado)
+            public Prestamos(int prestamoID, int usuarioID, int libroID, DateTime fechaPrestamo, DateTime fechaDevolucion, bool devuelto, string Documento, string ISBN, bool estado, string titulo)
             {
                 this.PrestamoID = prestamoID;
                 this.UsuarioID = usuarioID;
@@ -88,6 +90,7 @@ namespace Entidades
                 this.Documento = Documento;
                 this.ISBN = ISBN;
                 this.estado = estado;
+                this.Titulo = titulo;
             }
         }
         public class Devoluciones // tabla devoluciones
@@ -105,6 +108,17 @@ namespace Entidades
                 this.DevoReal = devoReal;
                 this.estado = estado;
             }
+        }
+        public class Admins
+        {
+            public int AdminID { get; set; }
+            public string Password { get; set; }
+
+            public Admins()
+            {
+
+            }
+
         }
         
     }

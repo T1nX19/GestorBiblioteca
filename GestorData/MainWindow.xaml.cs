@@ -38,6 +38,7 @@ namespace GestorData
                 devolucionescmb.Visibility = Visibility.Hidden;
                 usuariocmb.Visibility = Visibility.Hidden;
                 Prestamo.Visibility = Visibility.Hidden;
+                Devolucion.Visibility = Visibility.Hidden;
             }
         }
 
@@ -64,6 +65,16 @@ namespace GestorData
                 dt_usuarios.HeadersVisibility = DataGridHeadersVisibility.All;
                 List<Entidades.Entidades.Usuarios> usuarios = Funciones.Program.MostrarUsuarios();
                 dt_usuarios.ItemsSource = usuarios;
+            }
+            else if (indice_seleccionado == 3)
+            {
+                dt_libros.Visibility = Visibility.Hidden;
+                dt_prestamos.Visibility = Visibility.Hidden;
+                dt_devoluciones.Visibility = Visibility.Visible;
+                dt_usuarios.Visibility = Visibility.Hidden;
+                dt_devoluciones.HeadersVisibility = DataGridHeadersVisibility.All;
+                List<Entidades.Entidades.Devoluciones> usuarios = Funciones.Program.ListaDevolucion();
+                dt_devoluciones.ItemsSource = usuarios;
             }
             else if (indice_seleccionado == 4)
             {
@@ -194,6 +205,17 @@ namespace GestorData
         {
             AgregarPrestamo.MainWindow mainWindow = new AgregarPrestamo.MainWindow();
             mainWindow.ShowDialog();
+        }
+
+        private void Devolucion_Click(object sender, RoutedEventArgs e)
+        {
+            Devoluciones.MainWindow mainWindow = new Devoluciones.MainWindow();
+            mainWindow.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     

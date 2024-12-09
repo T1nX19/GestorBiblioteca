@@ -108,9 +108,9 @@
       <Project>{cd323c67-a007-4c5e-be27-8bbc51b1cd51}</Project>
       <Name>GestorData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Registros\Registros.csproj">
-      <Project>{edfea875-2f47-48c2-b67b-f86a952d20a8}</Project>
-      <Name>Registros</Name>
+    <ProjectReference Include="..\Ventanatoken\Ventanatoken.csproj">
+      <Project>{f62b2798-28e1-45f2-bd2b-f9bd7d9b3dc4}</Project>
+      <Name>Ventanatoken</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

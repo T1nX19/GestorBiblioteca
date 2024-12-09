@@ -53,8 +53,10 @@ namespace Iniciosesion
 
         private void Button_Click_1(object sender, RoutedEventArgs e) //boton de registro
         {
-            Registros.MainWindow registros = new Registros.MainWindow();
-            registros.ShowDialog();
+            Ventanatoken.MainWindow mainWindow = new Ventanatoken.MainWindow();
+            mainWindow.Show();
+
+            
         }
     }
 }
