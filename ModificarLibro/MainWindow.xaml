@@ -3,46 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-
-        Title="Modificar Libro" Height="400" Width="400">
-    <StackPanel Margin="10" Background="#261C1A">
+        Title="Modificar Libro" Height="400" Width="400" Background="#1E1E2C">
+    <StackPanel Margin="10" Background="#2E2E3E">
         <!-- Header -->
-        <TextBlock Text="Modificar Libro" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#D5CCC7"/>
+        <TextBlock Text="Modificar Libro" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="#D5CCC7"/>
 
         <!-- ID del Libro (Solo lectura) -->
         <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="ID del Libro:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="libroId" Width="220" IsReadOnly="True"/>
+            <TextBlock Text="ID del Libro:" Width="140" VerticalAlignment="Center" Foreground="#D5CCC7"/>
+            <TextBox x:Name="libroId" Width="200" IsReadOnly="True" Background="#404053" Foreground="White" BorderThickness="0"/>
         </StackPanel>
 
         <!-- Título -->
         <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Título:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="titulom" Width="220"/>
+            <TextBlock Text="Título:" Width="140" VerticalAlignment="Center" Foreground="#D5CCC7"/>
+            <TextBox x:Name="titulom" Width="200" Background="#404053" Foreground="White" BorderThickness="0"/>
         </StackPanel>
 
         <!-- Autor -->
         <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Autor:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="autorm" Width="220"/>
+            <TextBlock Text="Autor:" Width="140" VerticalAlignment="Center" Foreground="#D5CCC7"/>
+            <TextBox x:Name="autorm" Width="200" Background="#404053" Foreground="White" BorderThickness="0"/>
         </StackPanel>
 
         <!-- ISBN -->
         <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="ISBN:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="ISBNm" Width="220"/>
+            <TextBlock Text="ISBN:" Width="140" VerticalAlignment="Center" Foreground="#D5CCC7"/>
+            <TextBox x:Name="ISBNm" Width="200" Background="#404053" Foreground="White" BorderThickness="0"/>
         </StackPanel>
 
         <!-- Fecha de Lanzamiento -->
         <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Fecha Lanzamiento:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <DatePicker x:Name="fecham" Width="220"/>
+            <TextBlock Text="Fecha Lanzamiento:" Width="140" VerticalAlignment="Center" Foreground="#D5CCC7"/>
+            <DatePicker x:Name="fecham" Width="200" Background="#404053" />
         </StackPanel>
 
         <!-- Botones -->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,50">
-            <Button Content="Cancelar" Name="cancelar" Width="100" Margin="5,0" Click="cancelar_Click"/>
-            <Button Content="Guardar" Name="guardar" Width="100" Margin="5,0" Click="guardar_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30">
+            <Button Content="Cancelar" Name="cancelar" Width="120" Height="40" Margin="10,0" Background="#FF6C63" Foreground="White" BorderThickness="0" Click="cancelar_Click"/>
+            <Button Content="Guardar" Name="guardar" Width="120" Height="40" Margin="10,0" Background="#63CFFF" Foreground="White" BorderThickness="0" Click="guardar_Click"/>
         </StackPanel>
     </StackPanel>
 </Window>

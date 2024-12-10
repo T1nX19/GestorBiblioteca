@@ -195,6 +195,7 @@ namespace Funciones
                             Disponible = reader.GetBoolean(4),
                             FechaLanzamiento = reader.GetDateTime(5)
                         };
+                        string disponibleTexto = librosobj.Disponible ? "Sí" : "No";
 
                         libros.Add(librosobj);
                     }
@@ -294,30 +295,6 @@ namespace Funciones
             }
         }
 
-        public static void EliminarPrestamo(int id)
-        {
-            using (SqlConnection connection = conexion())
-            {
-                SqlTransaction sqlTransaction = connection.BeginTransaction();
-
-                try
-                {
-                    string query = "UPDATE Prestamos SET estado=1 WHERE PrestamoID=@id";
-                    SqlCommand cmd = new SqlCommand(query, connection, sqlTransaction);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.ExecuteNonQuery();
-
-                    sqlTransaction.Commit();
-                    MessageBox.Show("Se ha eliminado el prestamo");
-                }
-                catch (Exception ex)
-                {
-                    // Si ocurre un error, revertir la transacción
-                    sqlTransaction.Rollback();
-                    Console.WriteLine("Ocurrió un error: " + ex.Message);
-                }
-            }
-        }
 
         public static List<Entidades.Entidades.Usuarios> MostrarUsuarios() // Lista de usuarios
         {
@@ -391,36 +368,111 @@ namespace Funciones
             }
             return libro;
         }
+
         public static bool AgregarPrestamos(Entidades.Entidades.Prestamos prestamo)
         {
-            string query = "INSERT INTO Prestamos (UsuarioID, LibroID, FechaPrestamo, FechaDevolucion, Devuelto, Documento, ISBN)\r\nVALUES (@UsuarioID, @LibroID, @FechaPrestamo, @FechaDevolucion, @Devuelto, @Documento, @ISBN);";
-            
-            try
+            using (SqlConnection conn = conexion()) // Asegúrate de tener un método de conexión
             {
-                using (SqlConnection connection = conexion())
+
+                string insertQuery = @"INSERT INTO Prestamos 
+                               (UsuarioID, LibroID, FechaPrestamo, FechaDevolucion, Devuelto, Documento, ISBN) 
+                               VALUES 
+                               (@UsuarioID, @LibroID, @FechaPrestamo, @FechaDevolucion, @Devuelto, @Documento, @ISBN);";
+
+                string updateQuery = "UPDATE Libros SET Disponible = 0 WHERE LibroID = @LibroID;";
+
+                using (SqlTransaction transaction = conn.BeginTransaction())
                 {
+                    try
+                    {
+                        // Inserción en la tabla Prestamos
+                        using (SqlCommand insertCommand = new SqlCommand(insertQuery, conn, transaction))
+                        {
+                            insertCommand.Parameters.AddWithValue("@UsuarioID", prestamo.UsuarioID);
+                            insertCommand.Parameters.AddWithValue("@LibroID", prestamo.LibroID);
+                            insertCommand.Parameters.AddWithValue("@FechaPrestamo", prestamo.FechaPrestamo);
+                            insertCommand.Parameters.AddWithValue("@FechaDevolucion", prestamo.FechaDevolucion);
+                            insertCommand.Parameters.AddWithValue("@Devuelto", prestamo.Devuelto);
+                            insertCommand.Parameters.AddWithValue("@Documento", prestamo.Documento);
+                            insertCommand.Parameters.AddWithValue("@ISBN", prestamo.ISBN);
 
-                    SqlCommand command = new SqlCommand(query, connection);
-                    
+                            int retorno = insertCommand.ExecuteNonQuery();
 
-                    command.Parameters.AddWithValue("@UsuarioID", prestamo.UsuarioID);
-                    command.Parameters.AddWithValue("@LibroID", prestamo.LibroID);
-                    command.Parameters.AddWithValue("@FechaPrestamo", prestamo.FechaPrestamo);
-                    command.Parameters.AddWithValue("@FechaDevolucion", prestamo.FechaDevolucion);
-                    command.Parameters.AddWithValue("@Devuelto", prestamo.Devuelto);
-                    command.Parameters.AddWithValue("@Documento", prestamo.Documento);
-                    command.Parameters.AddWithValue("@ISBN", prestamo.ISBN);
+                            if (retorno <= 0)
+                            {
+                                transaction.Rollback(); // Cancela la transacción si falla
+                                return false;
+                            }
+                        }
 
-                    int retorno = command.ExecuteNonQuery(); // Si devuelve 1 se agrega el usuario correctamente. si es 0 hay un error
-                    return retorno > 0;
+                        // Actualización en la tabla Libros
+                        using (SqlCommand updateCommand = new SqlCommand(updateQuery, conn, transaction))
+                        {
+                            updateCommand.Parameters.AddWithValue("@LibroID", prestamo.LibroID);
+                            updateCommand.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit(); // Confirma la transacción
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback(); // Cancela la transacción en caso de error
+                        MessageBox.Show("Ha ocurrido un error: " + ex.Message);
+                        return false;
+                    }
                 }
             }
-            catch (Exception ex)
+        }
+
+        public static bool EliminarPrestamo(int prestamoID, int libroID)
+        {
+            using (SqlConnection conn = conexion()) // Método de conexión a la base de datos
             {
-                MessageBox.Show("Ha ocurrido un error: " + ex.Message);
-                return false;
+
+                // Consulta de eliminación
+                string deleteQuery = "UPDATE Prestamos SET estado=1 WHERE PrestamoID=@id";
+
+                // Consulta de actualización
+                string updateQuery = "UPDATE Libros SET Disponible = 1 WHERE LibroID = @LibroID";
+
+                using (SqlTransaction transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        // Eliminar el préstamo
+                        using (SqlCommand deleteCommand = new SqlCommand(deleteQuery, conn, transaction))
+                        {
+                            deleteCommand.Parameters.AddWithValue("@id", prestamoID);
+                            int result = deleteCommand.ExecuteNonQuery();
+
+                            if (result <= 0)
+                            {
+                                transaction.Rollback(); // Cancela la transacción
+                                return false;
+                            }
+                        }
+
+                        // Actualizar la disponibilidad del libro
+                        using (SqlCommand updateCommand = new SqlCommand(updateQuery, conn, transaction))
+                        {
+                            updateCommand.Parameters.AddWithValue("@LibroID", libroID);
+                            updateCommand.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit(); // Confirma la transacción
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback(); // Cancela la transacción en caso de error
+                        MessageBox.Show("Ha ocurrido un error: " + ex.Message);
+                        return false;
+                    }
+                }
             }
         }
+
 
 
 

@@ -43,6 +43,7 @@ namespace GestorData
         }
 
 
+
         private void selector_SelectionChanged(object sender, SelectionChangedEventArgs e) 
         {
             int indice_seleccionado = selector.SelectedIndex;
@@ -54,6 +55,7 @@ namespace GestorData
                 dt_usuarios.Visibility = Visibility.Hidden;
                 dt_libros.HeadersVisibility = DataGridHeadersVisibility.All;
                 List<Entidades.Entidades.Libros> libros = Funciones.Program.CargarLibros();
+                
                 dt_libros.ItemsSource= libros;
             }
             else if (indice_seleccionado==2)
@@ -191,8 +193,9 @@ namespace GestorData
                 {
                     if (result == MessageBoxResult.Yes)
                     {
-                        Funciones.Program.EliminarPrestamo(prestamoSeleccionado.PrestamoID);
+                        Funciones.Program.EliminarPrestamo(prestamoSeleccionado.PrestamoID, prestamoSeleccionado.LibroID);
                         List<Entidades.Entidades.Prestamos> prestamos = Funciones.Program.ListaPrestamo();
+                        dt_prestamos.ItemsSource = prestamos;
                     }
                 }
             else
@@ -203,8 +206,12 @@ namespace GestorData
 
         private void Prestamo_Click(object sender, RoutedEventArgs e)
         {
-            AgregarPrestamo.MainWindow mainWindow = new AgregarPrestamo.MainWindow();
-            mainWindow.ShowDialog();
+            if ((dt_libros.SelectedItem is Entidades.Entidades.Libros libroSeleccionado))
+            {
+                AgregarPrestamo.MainWindow mainWindow = new AgregarPrestamo.MainWindow(libroSeleccionado);
+                mainWindow.ShowDialog();
+            }
+            
         }
 
         private void Devolucion_Click(object sender, RoutedEventArgs e)

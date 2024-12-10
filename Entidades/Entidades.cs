@@ -49,6 +49,7 @@ namespace Entidades
             public string ISBN { get; set; }
             public bool Disponible { get; set; }
             public bool estado { get; set; }
+            public string DisponibleTexto => Disponible ? "Sí" : "No";
 
             public Libros() { }
             public Libros(int LibroID, string Titulo, string Autor, DateTime FechaLanzamiento, string ISBN, bool Disponible, bool estado)
@@ -107,6 +108,7 @@ namespace Entidades
                 this.PrestamoID = prestamoID;
                 this.DevoReal = devoReal;
                 this.estado = estado;
+                
             }
         }
         public class Admins

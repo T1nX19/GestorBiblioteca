@@ -2,8 +2,6 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\GestorData
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\GestorData.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\GestorData.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\GestorData.csproj.AssemblyReference.cache
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\MainWindow.baml
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\MainWindow.g.cs
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\App.g.cs
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\GestorData_MarkupCompile.cache
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\GestorData.g.resources
@@ -31,3 +29,5 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\AgregarPre
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\Devoluciones.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\Devoluciones.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\bin\Debug\Devoluciones.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\MainWindow.baml
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\GestorData\obj\Debug\MainWindow.g.cs

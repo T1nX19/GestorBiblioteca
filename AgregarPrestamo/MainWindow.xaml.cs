@@ -21,9 +21,20 @@ namespace AgregarPrestamo
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        Entidades.Entidades.Libros libroAPrestar = new Entidades.Entidades.Libros();
+        public MainWindow(Entidades.Entidades.Libros libros)
         {
+            libroAPrestar= libros;
             InitializeComponent();
+
+            // Llena los campos con los datos del libro seleccionado
+            idlibrop.Text = libroAPrestar.LibroID.ToString();
+            titulop.Text = libroAPrestar.Titulo;
+            autorp.Text = libroAPrestar.Autor;
+            ISBNp.Text = libroAPrestar.ISBN;
+
+            fechaPrestamo.SelectedDate = DateTime.Now;
+            devop.SelectedDate = DateTime.Now.AddDays(7);
         }
 
 
@@ -62,9 +73,9 @@ namespace AgregarPrestamo
 
 
 
-            if (prestamopp.SelectedDate < DateTime.Now)
+            if (fechaPrestamo.SelectedDate < DateTime.Now)
             {
-                prestamos.FechaPrestamo = prestamopp.SelectedDate.Value;
+                prestamos.FechaPrestamo = fechaPrestamo.SelectedDate.Value;
             }
             else
             {

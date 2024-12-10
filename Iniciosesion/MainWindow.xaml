@@ -3,34 +3,49 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Iniciosesion"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Inicio Sesion" Height="500" Width="400">
-    <StackPanel Background="#261C1A">
-        <StackPanel Margin="0,100,0,0">    
-            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Correo" TextAlignment="Center" > 
-            
-            </TextBlock>
-            <TextBox x:Name="correoi" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="17" HorizontalContentAlignment="Center">   
-            
-            </TextBox>
-        </StackPanel>
-        <StackPanel Margin="0,25,0,0">
-            <TextBlock FontSize="25" Foreground="#D5CCC7" Text="Contraseña" TextAlignment="Center"> 
-            </TextBlock>
-            <PasswordBox x:Name="contraseñai" VerticalAlignment="Center" Height="30" Width="200" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-            
-            </PasswordBox>
-        </StackPanel>
-        <StackPanel>
-            <Button FontSize="17" Height="30" Width="120" Margin="0,25,0,0" Click="Button_Click">
-                Iniciar Sesion
-            </Button>
-            <Button Background="Transparent" Foreground="#D5CCC7" FontSize="17" Height="30" Width="100" Margin="0,25,0,0" Click="Button_Click_1">
-                Registrarse
-            </Button>
-        </StackPanel>
-    </StackPanel>
+        Title="Inicio de Sesión" Height="500" Width="700" Background="#1E1E2C">
+    <Grid>
+        <!-- Main Container -->
+        <Border CornerRadius="10" Background="#2E2E3E" Margin="20" Padding="20" >
+            <StackPanel>
+                <!-- Header -->
+                <TextBlock FontSize="28" FontWeight="Bold" Foreground="#D5CCC7" Text="Bienvenido" TextAlignment="Center" Margin="0,10" />
+
+                <!-- Email Section -->
+                <StackPanel Margin="0,30,0,0">
+                    <TextBlock FontSize="20" Foreground="#D5CCC7" Text="Correo" HorizontalAlignment="Center" Margin="10,0" />
+                    <TextBox x:Name="correoi" Height="30" Width="300"  Margin="0,10" HorizontalContentAlignment="Center"
+                             VerticalAlignment="Center" HorizontalAlignment="Center"
+                             Background="#404053" Foreground="White" 
+                             FontSize="18"
+                             BorderThickness="0"  />
+                </StackPanel>
+
+                <!-- Password Section -->
+                <StackPanel Margin="0,20,0,0">
+                    <TextBlock FontSize="20" Foreground="#D5CCC7" Text="Contraseña" HorizontalAlignment="Center" Margin="10,0" />
+                    <PasswordBox x:Name="contraseñai" Height="30" Width="300" Margin="0,10" 
+                                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                 Background="#404053" Foreground="White" 
+                                 BorderThickness="0"  />
+                </StackPanel>
+
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0" >
+                    <Button Content="Iniciar Sesión" Width="130" Height="40" 
+                            FontSize="16" FontWeight="Bold" Foreground="White"
+                            Background="#6C63FF" BorderThickness="0"  
+                            Click="Button_Click"/>
+                    <Button Content="Registrarse" Width="130" Height="40" 
+                            FontSize="16" FontWeight="Bold" Foreground="White"
+                            Background="#FF6C63" BorderThickness="0"  
+                            Click="Button_Click_1"
+                            />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>

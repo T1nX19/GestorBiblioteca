@@ -7,41 +7,78 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="400" Width="700">
-    <StackPanel Margin="10" Background="#261C1A">
+        Title="Agregar Préstamo" Height="550" Width="700" Background="#1E1E2C">
+    <Grid Margin="10">
+        <!-- Main Container -->
+        <Border Background="#2E2E3E" CornerRadius="10" Margin="10" Padding="20">
+            <StackPanel>
+                <!-- Header -->
+                <TextBlock Text="Agregar Préstamo" 
+                           FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" 
+                           Margin="0,0,0,20" Foreground="#D5CCC7"/>
 
-        <TextBlock Text="Agregar Prestamo" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#D5CCC7"/>
+                <!-- Documento Usuario -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <TextBlock Text="Documento Usuario:" Width="160" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="usuariop" Width="280" Height="25" FontSize="16"
+                             Background="#404053" Foreground="White"  />
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <TextBlock Text="Libro ID:" Width="160" VerticalAlignment="Center" 
+                                Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="idlibrop" Width="280" Height="25" FontSize="16"
+                             Background="#404053" Foreground="White" IsReadOnly="True"  />
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <TextBlock Text="Titulo:" Width="160" VerticalAlignment="Center" 
+                                Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="titulop" Width="280" Height="25" FontSize="16"
+                             Background="#404053" Foreground="White" IsReadOnly="True" />
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <TextBlock Text="Documento Usuario:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="usuariop" Width="220"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <TextBlock Text="Autor:" Width="160" VerticalAlignment="Center" 
+                                Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="autorp" Width="280" Height="25" FontSize="16"
+                             Background="#404053" Foreground="White" IsReadOnly="True" />
+                </StackPanel>
 
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <TextBlock Text="ISBN:" Width="160" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="ISBNp" Width="280" Height="25" FontSize="16"
+                             Background="#404053" Foreground="White"  IsReadOnly="True" />
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="ISBN:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="ISBNp" Width="220"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" Visibility="Collapsed">
+                    <TextBlock Text="Fecha Préstamo:" Width="160" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <DatePicker x:Name="fechaPrestamo" Width="280" Height="25"
+                                Background="#404053" IsEnabled="False"/>
+                </StackPanel>
+                <!-- Fecha Devolución -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <TextBlock Text="Devolución:" Width="160" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <DatePicker x:Name="devop" Width="280" Height="25"
+                                Background="#404053"   />
+                </StackPanel>
 
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <TextBlock Text="Fecha Prestamo:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <DatePicker x:Name="prestamopp" Width="220"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="Devolucion:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <DatePicker x:Name="devop" Width="220"/>
-        </StackPanel>
-
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="center" Margin="0,50">
-            <Button Content="Cancelar" Name="cancelar" Width="100" Margin="5,0" Click="cancelar_Click_1"/>
-            <Button Content="Guardar" Name="guardar" Width="100" Margin="5,0" Click="guardar_Click_1"/>
-        </StackPanel>
-    </StackPanel>
-
-
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30">
+                    <Button Content="Cancelar" Name="cancelar" Width="120" Height="40" Margin="10,0"
+                            FontSize="16" FontWeight="Bold" Foreground="White" 
+                            Background="#FF6C63" BorderThickness="0" 
+                            Click="cancelar_Click_1"/>
+                    <Button Content="Guardar" Name="guardar" Width="120" Height="40" Margin="10,0"
+                            FontSize="16" FontWeight="Bold" Foreground="White" 
+                            Background="#6C63FF" BorderThickness="0" 
+                            Click="guardar_Click_1"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>

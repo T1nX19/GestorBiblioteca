@@ -2,11 +2,8 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Iniciose
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Iniciosesion.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Iniciosesion.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion.csproj.AssemblyReference.cache
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\MainWindow.g.cs
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\App.g.cs
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion_MarkupCompile.cache
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion_MarkupCompile.lref
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\MainWindow.baml
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion.g.resources
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion.Properties.Resources.resources
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\Iniciosesion.csproj.GenerateResource.cache
@@ -41,3 +38,5 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Ventanat
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.exe
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.pdb
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\bin\Debug\Registros.exe.config
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\MainWindow.baml
+C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Iniciosesion\obj\Debug\MainWindow.g.cs

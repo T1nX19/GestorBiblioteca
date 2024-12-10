@@ -3,40 +3,65 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
+        Title="Agregar Libro" Height="350" Width="400" Background="#1E1E2C">
+    <Grid>
+        <!-- Main Container -->
+        <Border Background="#2E2E3E" CornerRadius="10" Margin="10" Padding="20">
+            <StackPanel>
+                <!-- Header -->
+                <TextBlock Text="Agregar Nuevo Libro" 
+                           FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" 
+                           Margin="0,0,0,15" Foreground="#D5CCC7"/>
 
-        Title="Agregar Libro" Height="350" Width="400">
-    <StackPanel Margin="10" Background="#261C1A">
-        
-        <TextBlock Text="Agregar Nuevo Libro" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#D5CCC7"/>
+                <!-- Title Field -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Título:" Width="120" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="titulol" Width="220" Height="30" Padding="5"
+                             Background="#404053" Foreground="White" 
+                             BorderThickness="0" />
+                </StackPanel>
 
-        
-        <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Título:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="titulol" Width="220"/>
-        </StackPanel>
+                <!-- Author Field -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Autor:" Width="120" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="autorl" Width="220" Height="30" Padding="5"
+                             Background="#404053" Foreground="White" 
+                             BorderThickness="0" />
+                </StackPanel>
 
-        
-        <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Autor:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="autorl" Width="220"/>
-        </StackPanel>
+                <!-- ISBN Field -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="ISBN:" Width="120" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <TextBox x:Name="ISBNl" Width="220" Height="30" Padding="5"
+                             Background="#404053" Foreground="White" 
+                             BorderThickness="0" />
+                </StackPanel>
 
-        
-        <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="ISBN:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <TextBox x:Name="ISBNl" Width="220"/>
-        </StackPanel>
+                <!-- Release Date Field -->
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock Text="Fecha Lanzamiento:" Width="120" VerticalAlignment="Center" 
+                               Foreground="#D5CCC7" FontSize="16"/>
+                    <DatePicker x:Name="fechal" Width="220" Height="30"
+                                Background="#404053" Foreground="White"
+                                BorderThickness="0" />
+                </StackPanel>
 
-        
-        <StackPanel Orientation="Horizontal" Margin="0,5">
-            <TextBlock Text="Fecha Lanzamiento:" Width="120" VerticalAlignment="Center" Foreground="#D5CCC7"/>
-            <DatePicker x:Name="fechal" Width="220"/>
-        </StackPanel>
-
-        
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="center" Margin="0,50">
-            <Button Content="Cancelar" Name="cancelar" Width="100" Margin="5,0" Click="cancelar_Click"/>
-            <Button Content="Guardar" Name="guardar" Width="100" Margin="5,0" Click="guardar_Click"/>
-        </StackPanel>
-    </StackPanel>
+                <!-- Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                    <Button Content="Cancelar" Width="100" Height="40" Margin="10,0"
+                            FontSize="16" FontWeight="Bold" Foreground="White"
+                            Background="#FF6C63" BorderThickness="0" 
+                            Click="cancelar_Click" />
+                    <Button Content="Guardar" Width="100" Height="40" Margin="10,0"
+                            FontSize="16" FontWeight="Bold" Foreground="White"
+                            Background="#6C63FF" BorderThickness="0" 
+                            Click="guardar_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>
+

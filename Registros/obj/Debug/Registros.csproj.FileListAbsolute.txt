@@ -5,7 +5,6 @@ C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\Registros.c
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\MainWindow.g.cs
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\App.g.cs
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\Registros_MarkupCompile.cache
-C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\Registros_MarkupCompile.lref
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\MainWindow.baml
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\Registros.g.resources
 C:\Users\silva\Desktop\Gestor Proyecto\GestorApp\Registros\obj\Debug\Registros.Properties.Resources.resources
