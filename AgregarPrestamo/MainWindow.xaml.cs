@@ -24,18 +24,20 @@ namespace AgregarPrestamo
         Entidades.Entidades.Libros libroAPrestar = new Entidades.Entidades.Libros();
         public MainWindow(Entidades.Entidades.Libros libros)
         {
-            libroAPrestar= libros;
+            
+            libroAPrestar = libros;
             InitializeComponent();
-
-            // Llena los campos con los datos del libro seleccionado
+            // Llena los campos con los datos del libro seleccionado si está disponible
             idlibrop.Text = libroAPrestar.LibroID.ToString();
             titulop.Text = libroAPrestar.Titulo;
             autorp.Text = libroAPrestar.Autor;
             ISBNp.Text = libroAPrestar.ISBN;
 
+            // Establece las fechas por defecto
             fechaPrestamo.SelectedDate = DateTime.Now;
             devop.SelectedDate = DateTime.Now.AddDays(7);
         }
+        
 
 
         private void cancelar_Click_1(object sender, RoutedEventArgs e)

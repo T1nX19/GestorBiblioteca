@@ -186,18 +186,18 @@ namespace GestorData
             else if(dt_prestamos.SelectedItem is Entidades.Entidades.Prestamos prestamoSeleccionado)
                 
                     if(prestamoSeleccionado == null || prestamoSeleccionado.PrestamoID == null)
-                {
+                    {
                     MessageBox.Show("Seleccione un prestamo");
-                }
-                else
-                {
+                    }
+                    else
+                    {
                     if (result == MessageBoxResult.Yes)
                     {
                         Funciones.Program.EliminarPrestamo(prestamoSeleccionado.PrestamoID, prestamoSeleccionado.LibroID);
                         List<Entidades.Entidades.Prestamos> prestamos = Funciones.Program.ListaPrestamo();
                         dt_prestamos.ItemsSource = prestamos;
                     }
-                }
+                    }
             else
             {
                 MessageBox.Show("Seleccione una casilla");
@@ -206,12 +206,22 @@ namespace GestorData
 
         private void Prestamo_Click(object sender, RoutedEventArgs e)
         {
-            if ((dt_libros.SelectedItem is Entidades.Entidades.Libros libroSeleccionado))
+
+            if (dt_libros.SelectedItem is Entidades.Entidades.Libros libroSeleccionado)
             {
-                AgregarPrestamo.MainWindow mainWindow = new AgregarPrestamo.MainWindow(libroSeleccionado);
-                mainWindow.ShowDialog();
+                // Verificar si el libro está disponible
+                if (!libroSeleccionado.Disponible)
+                {
+                    MessageBox.Show("El libro no está disponible para préstamo.", "Aviso", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return; // Detener la ejecución si no está disponible
+                }
+                else
+                {
+                    // Si el libro está disponible, abrir la ventana de préstamo
+                    AgregarPrestamo.MainWindow mainWindow = new AgregarPrestamo.MainWindow(libroSeleccionado);
+                    mainWindow.ShowDialog();
+                }
             }
-            
         }
 
         private void Devolucion_Click(object sender, RoutedEventArgs e)
