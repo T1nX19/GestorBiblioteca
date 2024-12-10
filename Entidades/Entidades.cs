@@ -77,6 +77,7 @@ namespace Entidades
             public string ISBN { get; set;}
             public string Titulo { get; set; }
             public bool estado { get; set; }
+            public string Autor { get; set; }
 
 
             public Prestamos() { }

@@ -58,20 +58,11 @@ namespace AgregarPrestamo
             }
             else
             {
-                MessageBox.Show("Ingrese un nombre entre 1 a 100 caracteres.");
+                MessageBox.Show("Ingrese un documento validos.");
                 return;
             }
 
-            if (ISBNp.Text.Length > 0 && ISBNp.Text.Length < 100)
-            {
-                prestamos.ISBN = ISBNp.Text;
-                prestamos.LibroID = libros.LibroID;
-            }
-            else
-            {
-                MessageBox.Show("Ingrese un ISBN correcto.");
-                return;
-            }
+           
 
 
 
