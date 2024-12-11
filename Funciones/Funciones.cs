@@ -573,6 +573,10 @@ namespace Funciones
                             ISBN = reader.GetString(5),
                             FechaPrestamo = reader.GetDateTime(6),
                             FechaDevolucion = reader.GetDateTime(7),
+<<<<<<< HEAD
+=======
+                            
+>>>>>>> 7807fc0c67a023897c22c39dad5037112db32d21
                         };
                        
                         prestamos.Add(prestamos1);

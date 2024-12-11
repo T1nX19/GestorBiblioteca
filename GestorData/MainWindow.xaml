@@ -81,7 +81,11 @@
                         <DataGridTextColumn Header="ID Usuario" Binding="{Binding UsuarioID}"/>
                         <DataGridTextColumn Header="Documento" Binding="{Binding Documento}"/>
                         <DataGridTextColumn Header="ID Libro" Binding="{Binding LibroID}"/>
+<<<<<<< HEAD
                         <DataGridTextColumn Header="Titulo" Binding="{Binding Titulo}"/>
+=======
+                        <DataGridTextColumn Header="Titulo" Binding="{Binding TituloLibro}"/>
+>>>>>>> 7807fc0c67a023897c22c39dad5037112db32d21
                         <DataGridTextColumn Header="ISBN" Binding="{Binding ISBN}"/>
                         <DataGridTextColumn Header="Fecha del Préstamo" Binding="{Binding FechaPrestamo}"/>
                         <DataGridTextColumn Header="Fecha de Devolución" Binding="{Binding FechaDevolucion}"/>
