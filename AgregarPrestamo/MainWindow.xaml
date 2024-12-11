@@ -22,9 +22,11 @@
                     <TextBlock Text="Documento Usuario:" Width="160" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
                     <TextBox x:Name="usuariop" Width="280" Height="25" FontSize="16"
-                             Background="#404053" Foreground="White"  />
+                    Background="#404053" Foreground="White"  />
                 </StackPanel>
 
+
+                <!-- Libro ID -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBlock Text="Libro ID:" Width="160" VerticalAlignment="Center" 
                                 Foreground="#D5CCC7" FontSize="16"/>
@@ -32,6 +34,7 @@
                              Background="#404053" Foreground="White" IsReadOnly="True"  />
                 </StackPanel>
 
+                <!-- Titulo -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBlock Text="Titulo:" Width="160" VerticalAlignment="Center" 
                                 Foreground="#D5CCC7" FontSize="16"/>
@@ -39,6 +42,7 @@
                              Background="#404053" Foreground="White" IsReadOnly="True" />
                 </StackPanel>
 
+                <!-- Autor -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBlock Text="Autor:" Width="160" VerticalAlignment="Center" 
                                 Foreground="#D5CCC7" FontSize="16"/>
@@ -46,6 +50,7 @@
                              Background="#404053" Foreground="White" IsReadOnly="True" />
                 </StackPanel>
 
+                <!-- ISBN -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBlock Text="ISBN:" Width="160" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
@@ -53,18 +58,20 @@
                              Background="#404053" Foreground="White"  IsReadOnly="True" />
                 </StackPanel>
 
+                <!-- Fecha Préstamo (Collapsed) -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10" Visibility="Collapsed">
                     <TextBlock Text="Fecha Préstamo:" Width="160" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
                     <DatePicker x:Name="fechaPrestamo" Width="280" Height="25"
                                 Background="#404053" IsEnabled="False"/>
                 </StackPanel>
+
                 <!-- Fecha Devolución -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
                     <TextBlock Text="Devolución:" Width="160" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
                     <DatePicker x:Name="devop" Width="280" Height="25"
-                                Background="#404053"   />
+                                Background="#404053" />
                 </StackPanel>
 
                 <!-- Buttons -->

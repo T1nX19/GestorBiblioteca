@@ -84,5 +84,10 @@ namespace AgregarLibro
                 return;
             }
         }
+
+        private void ISBNl_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

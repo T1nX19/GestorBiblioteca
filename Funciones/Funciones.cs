@@ -553,7 +553,7 @@ namespace Funciones
             
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT * FROM Prestamos WHERE estado=0";
+                string query = "SELECT \r\n    p.PrestamoID, \r\n    p.UsuarioID,\r\n    p.Documento,\r\n    p.LibroID,\r\n    l.Titulo AS TituloLibro,\r\n    p.ISBN,\r\n    p.FechaPrestamo, \r\n    p.FechaDevolucion \r\nFROM Prestamos p\r\nJOIN Libros l ON p.LibroID = l.LibroID\r\nJOIN Usuarios u ON p.UsuarioID = u.UsuarioID\r\nWHERE p.estado = 0";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -567,13 +567,12 @@ namespace Funciones
                         {
                             PrestamoID = reader.GetInt32(0),
                             UsuarioID = reader.GetInt32(1),
-                            LibroID = reader.GetInt32(2),
-                            FechaPrestamo = reader.GetDateTime(3),
-                            FechaDevolucion = reader.GetDateTime(4),
-                            Devuelto = reader.GetBoolean(5),
-                            Documento = reader.GetString(6),
-                            ISBN = reader.GetString(7),
-
+                            Documento = reader.GetString(2),
+                            LibroID = reader.GetInt32(3),
+                            Titulo = reader.GetString(4),
+                            ISBN = reader.GetString(5),
+                            FechaPrestamo = reader.GetDateTime(6),
+                            FechaDevolucion = reader.GetDateTime(7),
                         };
                        
                         prestamos.Add(prestamos1);
@@ -772,7 +771,19 @@ namespace Funciones
 
             using (SqlConnection connection = conexion())
             {
-                string query = "SELECT * FROM Devoluciones";
+                string query = @"SELECT 
+                     d.DevolucionID, 
+                     p.PrestamoID, 
+                     d.FechaDevolucionReal,
+                     p.UsuarioID, 
+                     p.Documento, 
+                     l.Titulo AS TituloLibro, 
+                     p.ISBN, 
+                     p.FechaPrestamo
+                 FROM Devoluciones d
+                 JOIN Prestamos p ON d.PrestamoID = p.PrestamoID
+                 JOIN Libros l ON p.LibroID = l.LibroID
+                 WHERE d.FechaDevolucionReal IS NOT NULL";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -786,11 +797,12 @@ namespace Funciones
                         {
                             DevolucionID = reader.GetInt32(0),
                             PrestamoID = reader.GetInt32(1),
-                            DevoReal = reader.GetDateTime(2),
-                            
-                            
-                            
-
+                            FechaDevolucionReal = reader.GetDateTime(2),
+                            UsuarioID = reader.GetInt32(3),
+                            Documento = reader.GetString(4),
+                            Titulo = reader.GetString(5),
+                            ISBN = reader.GetString(6),
+                            FechaPrestamo = reader.GetDateTime(7),
                         };
 
                         devolucion.Add(devoluciones);

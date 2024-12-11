@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Agregar Libro" Height="350" Width="400" Background="#1E1E2C">
+        Title="Agregar Libro" Height="400" Width="400" Background="#1E1E2C">
     <Grid>
         <!-- Main Container -->
         <Border Background="#2E2E3E" CornerRadius="10" Margin="10" Padding="20">
@@ -17,7 +17,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0,5">
                     <TextBlock Text="Título:" Width="120" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
-                    <TextBox x:Name="titulol" Width="220" Height="30" Padding="5"
+                    <TextBox x:Name="titulol" Width="220" Height="25" Padding="5"
                              Background="#404053" Foreground="White" 
                              BorderThickness="0" />
                 </StackPanel>
@@ -26,7 +26,7 @@
                 <StackPanel Orientation="Horizontal" Margin="0,5">
                     <TextBlock Text="Autor:" Width="120" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
-                    <TextBox x:Name="autorl" Width="220" Height="30" Padding="5"
+                    <TextBox x:Name="autorl" Width="220" Height="25" Padding="5"
                              Background="#404053" Foreground="White" 
                              BorderThickness="0" />
                 </StackPanel>
@@ -35,17 +35,17 @@
                 <StackPanel Orientation="Horizontal" Margin="0,5">
                     <TextBlock Text="ISBN:" Width="120" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
-                    <TextBox x:Name="ISBNl" Width="220" Height="30" Padding="5"
+                    <TextBox x:Name="ISBNl" Width="220" Height="25" Padding="5"
                              Background="#404053" Foreground="White" 
-                             BorderThickness="0" />
+                             BorderThickness="0" TextChanged="ISBNl_TextChanged" />
                 </StackPanel>
 
                 <!-- Release Date Field -->
                 <StackPanel Orientation="Horizontal" Margin="0,5">
                     <TextBlock Text="Fecha Lanzamiento:" Width="120" VerticalAlignment="Center" 
                                Foreground="#D5CCC7" FontSize="16"/>
-                    <DatePicker x:Name="fechal" Width="220" Height="30"
-                                Background="#404053" Foreground="White"
+                    <DatePicker x:Name="fechal" Width="200" Height="25"
+                                Background="#404053"
                                 BorderThickness="0" />
                 </StackPanel>
 

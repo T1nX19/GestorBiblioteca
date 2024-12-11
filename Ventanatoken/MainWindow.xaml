@@ -20,7 +20,7 @@
                 <!-- Password Input -->
                 <PasswordBox x:Name="Passbox" 
                              HorizontalAlignment="Left" VerticalAlignment="Center" 
-                             Margin="140,0,0,0" Width="180" Height="35" 
+                             Margin="140,0,0,0" Width="180" Height="25" 
                              FontSize="15" Padding="5"
                              Background="#404053" Foreground="White" 
                              BorderThickness="0"  />

@@ -183,25 +183,7 @@ namespace GestorData
                     }
                 }
             }
-            else if(dt_prestamos.SelectedItem is Entidades.Entidades.Prestamos prestamoSeleccionado)
-                
-                    if(prestamoSeleccionado == null || prestamoSeleccionado.PrestamoID == null)
-                    {
-                    MessageBox.Show("Seleccione un prestamo");
-                    }
-                    else
-                    {
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        Funciones.Program.EliminarPrestamo(prestamoSeleccionado.PrestamoID, prestamoSeleccionado.LibroID);
-                        List<Entidades.Entidades.Prestamos> prestamos = Funciones.Program.ListaPrestamo();
-                        dt_prestamos.ItemsSource = prestamos;
-                    }
-                    }
-            else
-            {
-                MessageBox.Show("Seleccione una casilla");
-            }
+            
         }
 
         private void Prestamo_Click(object sender, RoutedEventArgs e)
@@ -226,8 +208,30 @@ namespace GestorData
 
         private void Devolucion_Click(object sender, RoutedEventArgs e)
         {
-            Devoluciones.MainWindow mainWindow = new Devoluciones.MainWindow();
-            mainWindow.ShowDialog();
+            MessageBoxResult result = MessageBox.Show("¿Estás seguro de que deseas devolver este libro?",
+                                                  "Confirmar Devolucion",
+                                                  MessageBoxButton.YesNo,
+                                                  MessageBoxImage.Warning);
+            if (dt_prestamos.SelectedItem is Entidades.Entidades.Prestamos prestamoSeleccionado)
+
+                if (prestamoSeleccionado == null || prestamoSeleccionado.PrestamoID == null)
+                {
+                    MessageBox.Show("Seleccione un prestamo");
+                }
+                else
+                {
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Funciones.Program.EliminarPrestamo(prestamoSeleccionado.PrestamoID, prestamoSeleccionado.LibroID);
+                        List<Entidades.Entidades.Prestamos> prestamos = Funciones.Program.ListaPrestamo();
+                        dt_prestamos.ItemsSource = prestamos;
+                    }
+                }
+            else
+            {
+                MessageBox.Show("Seleccione una casilla");
+            }
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -98,17 +98,23 @@ namespace Entidades
         {
             public int DevolucionID { get; set; }
             public int PrestamoID { get; set; }
-            public DateTime DevoReal { get; set; }
+            public DateTime FechaDevolucionReal { get; set; }
+            public int UsuarioID { get; set; }
+            public string Documento { get; set; }
+            public string Titulo { get; set; }
+            public string ISBN { get; set; }
+            public DateTime FechaPrestamo { get; set; }
             public bool estado { get; set; }
 
             public Devoluciones() { }
-            public Devoluciones(int devolucionID, int prestamoID, DateTime devoReal, bool estado)
+            public Devoluciones(int devolucionID, int prestamoID, DateTime FechaDevolucionReal, bool estado, string Documento, string Titulo)
             {
                 this.DevolucionID = devolucionID;
                 this.PrestamoID = prestamoID;
-                this.DevoReal = devoReal;
+                this.FechaDevolucionReal = FechaDevolucionReal;
                 this.estado = estado;
-                
+                this.Documento = Documento;
+                this.Titulo = Titulo;
             }
         }
         public class Admins

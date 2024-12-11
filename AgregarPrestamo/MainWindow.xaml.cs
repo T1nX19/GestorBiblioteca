@@ -58,7 +58,7 @@ namespace AgregarPrestamo
             }
             else
             {
-                MessageBox.Show("Ingrese un nombre entre 1 a 100 caracteres.");
+                MessageBox.Show("Ingrese un documento valido.");
                 return;
             }
 
