@@ -385,6 +385,14 @@ namespace Funciones
                 {
                     try
                     {
+                        // Actualización en la tabla Libros
+                        using (SqlCommand updateCommand = new SqlCommand(updateQuery, conn, transaction))
+                        {
+                            updateCommand.Parameters.AddWithValue("@LibroID", prestamo.LibroID);
+                            updateCommand.ExecuteNonQuery();
+                        }
+
+
                         // Inserción en la tabla Prestamos
                         using (SqlCommand insertCommand = new SqlCommand(insertQuery, conn, transaction))
                         {
@@ -405,12 +413,7 @@ namespace Funciones
                             }
                         }
 
-                        // Actualización en la tabla Libros
-                        using (SqlCommand updateCommand = new SqlCommand(updateQuery, conn, transaction))
-                        {
-                            updateCommand.Parameters.AddWithValue("@LibroID", prestamo.LibroID);
-                            updateCommand.ExecuteNonQuery();
-                        }
+                        
 
                         transaction.Commit(); // Confirma la transacción
                         return true;
@@ -836,5 +839,29 @@ namespace Funciones
              return new string(chars);
         }
         
+        public static bool existeUsuario(int id)
+        {
+            bool existe = false;
+
+            string query = "SELECT COUNT (1) FROM Usuarios WHERE UsuarioID=@usuarioid";
+
+            using (SqlConnection connection = conexion())
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.Parameters.AddWithValue("@usuarioid", id);
+
+                try
+                {
+                    int count = (int)cmd.ExecuteScalar();
+                    existe = count > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un error. ");
+                }
+            }
+            return existe;
+        }
     }
 }

@@ -56,6 +56,11 @@ namespace AgregarPrestamo
                 prestamos.Documento = usuariop.Text;
                 prestamos.UsuarioID = usuarios.UsuarioID;
             }
+            else if (Funciones.Program.existeUsuario(int.Parse(usuariop.Text)))
+            {
+                MessageBox.Show("No se encontro un usuario con ese documento");
+                return;
+            }
             else
             {
 
@@ -63,6 +68,7 @@ namespace AgregarPrestamo
 
                 return;
             }
+            
 
            
 
