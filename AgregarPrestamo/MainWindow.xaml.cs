@@ -87,6 +87,11 @@ namespace AgregarPrestamo
                 MessageBox.Show("La fecha está fuera del rango.");
                 return;
             }
+            prestamos.UsuarioID=usuarios.UsuarioID;
+            prestamos.LibroID= libroAPrestar.LibroID;
+            prestamos.Devuelto = false;
+            prestamos.ISBN = libroAPrestar.ISBN;
+
 
             if (Funciones.Program.AgregarPrestamos(prestamos))
             {
