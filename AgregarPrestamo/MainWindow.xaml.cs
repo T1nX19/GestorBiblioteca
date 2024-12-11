@@ -58,11 +58,9 @@ namespace AgregarPrestamo
             }
             else
             {
-<<<<<<< HEAD
+
                 MessageBox.Show("Ingrese un documento valido.");
-=======
-                MessageBox.Show("Ingrese un documento validos.");
->>>>>>> 7807fc0c67a023897c22c39dad5037112db32d21
+
                 return;
             }
 
